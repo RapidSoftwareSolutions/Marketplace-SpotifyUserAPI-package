@@ -1,6 +1,6 @@
 <?php
 
-$app->post('/api/SpotifyUserAPI/getAccessToken', function ($request, $response, $args) {
+$app->post('/api/SpotifyUserAPI/refreshAccessToken', function ($request, $response, $args) {
     $settings =  $this->settings;
     
     $data = $request->getBody();
@@ -17,11 +17,8 @@ $app->post('/api/SpotifyUserAPI/getAccessToken', function ($request, $response, 
     if(empty($post_data['args']['client_key'])) {
         $error[] = 'client_key cannot be empty';
     }
-    if(empty($post_data['args']['code'])) {
-        $error[] = 'code cannot be empty';
-    }
-    if(empty($post_data['args']['redirect_uri'])) {
-        $error[] = 'redirect_uri cannot be empty';
+    if(empty($post_data['args']['refresh_token'])) {
+        $error[] = 'refresh_token cannot be empty';
     }
     
     if(!empty($error)) {
@@ -31,7 +28,7 @@ $app->post('/api/SpotifyUserAPI/getAccessToken', function ($request, $response, 
     }
     
     
-    
+    $headers['Authorization'] = 'Basic ' . base64_encode($post_data['args']['client_id'].':'.$post_data['args']['client_key']);
     $query_str = 'https://accounts.spotify.com/api/token';
     
     $client = $this->httpClient;
@@ -41,12 +38,10 @@ $app->post('/api/SpotifyUserAPI/getAccessToken', function ($request, $response, 
         $resp = $client->post( $query_str, 
             [
                 'form_params' => [
-                    'grant_type'=> 'authorization_code',
-                    'code'=> $post_data['args']['code'],
-                    'redirect_uri'=> $post_data['args']['redirect_uri'],
-                    'client_id'=> $post_data['args']['client_id'],
-                    'client_secret'=> $post_data['args']['client_key']
-                ]
+                    'grant_type'=> 'refresh_token',
+                    'refresh_token'=> $post_data['args']['refresh_token']
+                ],
+                'headers' => $headers
             ]);
         $responseBody = $resp->getBody()->getContents();
         $code = $resp->getStatusCode();

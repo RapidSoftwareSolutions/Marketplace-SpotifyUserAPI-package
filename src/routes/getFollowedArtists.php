@@ -1,6 +1,6 @@
 <?php
 
-$app->post('/api/SpotifyUserAPI/getAccessToken', function ($request, $response, $args) {
+$app->post('/api/SpotifyUserAPI/getFollowedArtists', function ($request, $response, $args) {
     $settings =  $this->settings;
     
     $data = $request->getBody();
@@ -11,17 +11,8 @@ $app->post('/api/SpotifyUserAPI/getAccessToken', function ($request, $response, 
     }
     
     $error = [];
-    if(empty($post_data['args']['client_id'])) {
-        $error[] = 'client_id cannot be empty';
-    }
-    if(empty($post_data['args']['client_key'])) {
-        $error[] = 'client_key cannot be empty';
-    }
-    if(empty($post_data['args']['code'])) {
-        $error[] = 'code cannot be empty';
-    }
-    if(empty($post_data['args']['redirect_uri'])) {
-        $error[] = 'redirect_uri cannot be empty';
+    if(empty($post_data['args']['access_token'])) {
+        $error[] = 'access_token cannot be empty';
     }
     
     if(!empty($error)) {
@@ -31,22 +22,16 @@ $app->post('/api/SpotifyUserAPI/getAccessToken', function ($request, $response, 
     }
     
     
-    
-    $query_str = 'https://accounts.spotify.com/api/token';
+    $headers['Authorization'] = 'Bearer ' . $post_data['args']['access_token'];
+    $query_str = 'https://api.spotify.com/v1/me/following?type=artist';
     
     $client = $this->httpClient;
 
     try {
 
-        $resp = $client->post( $query_str, 
+        $resp = $client->get( $query_str, 
             [
-                'form_params' => [
-                    'grant_type'=> 'authorization_code',
-                    'code'=> $post_data['args']['code'],
-                    'redirect_uri'=> $post_data['args']['redirect_uri'],
-                    'client_id'=> $post_data['args']['client_id'],
-                    'client_secret'=> $post_data['args']['client_key']
-                ]
+                'headers' => $headers
             ]);
         $responseBody = $resp->getBody()->getContents();
         $code = $resp->getStatusCode();

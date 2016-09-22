@@ -1,6 +1,7 @@
 <?php
+use Models;
 
-$app->post('/api/SpotifyUserAPI/getAccessToken', function ($request, $response, $args) {
+$app->post('/api/SpotifyUserAPI/getNewReleases', function ($request, $response, $args) {
     $settings =  $this->settings;
     
     $data = $request->getBody();
@@ -11,17 +12,8 @@ $app->post('/api/SpotifyUserAPI/getAccessToken', function ($request, $response, 
     }
     
     $error = [];
-    if(empty($post_data['args']['client_id'])) {
-        $error[] = 'client_id cannot be empty';
-    }
-    if(empty($post_data['args']['client_key'])) {
-        $error[] = 'client_key cannot be empty';
-    }
-    if(empty($post_data['args']['code'])) {
-        $error[] = 'code cannot be empty';
-    }
-    if(empty($post_data['args']['redirect_uri'])) {
-        $error[] = 'redirect_uri cannot be empty';
+    if(empty($post_data['args']['access_token'])) {
+        $error[] = 'access_token cannot be empty';
     }
     
     if(!empty($error)) {
@@ -30,29 +22,45 @@ $app->post('/api/SpotifyUserAPI/getAccessToken', function ($request, $response, 
         return $response->withHeader('Content-type', 'application/json')->withStatus(200)->withJson($result);
     }
     
+    $query = [];
+    if(!empty($post_data['args']['country'])) {
+        $query['country'] = $post_data['args']['country'];
+    }
+    if(!empty($post_data['args']['offset'])) {
+        $query['offset'] = $post_data['args']['offset'];
+    }
+    $query['limit'] = 50;
     
+    $headers['Authorization'] = 'Bearer ' . $post_data['args']['access_token'];
+    $query_str = 'https://api.spotify.com/v1/browse/new-releases';
     
-    $query_str = 'https://accounts.spotify.com/api/token';
+    $all_data = '';
     
     $client = $this->httpClient;
 
     try {
 
-        $resp = $client->post( $query_str, 
+        $resp = $client->get( $query_str, 
             [
-                'form_params' => [
-                    'grant_type'=> 'authorization_code',
-                    'code'=> $post_data['args']['code'],
-                    'redirect_uri'=> $post_data['args']['redirect_uri'],
-                    'client_id'=> $post_data['args']['client_id'],
-                    'client_secret'=> $post_data['args']['client_key']
-                ]
+                'headers' => $headers,
+                'query' => $query
             ]);
         $responseBody = $resp->getBody()->getContents();
+        $rawBody = json_decode($resp->getBody());
+        
+        $all_data[] = $rawBody;
+        
+        if($rawBody->albums->next != '' || $rawBody->albums->next != 'null') {
+            $pagin = new Models\Next();
+            $ret = $pagin->page($rawBody->albums->next, $headers, $query);
+        }
+        
+        $all_data+=$ret;
+        
         $code = $resp->getStatusCode();
         if(!empty(json_decode($responseBody)) && $code == '200') {
             $result['callback'] = 'success';
-            $result['contextWrites']['to'] = $responseBody;
+            $result['contextWrites']['to'] = json_encode($all_data);
         } else {
             $result['callback'] = 'error';
             $result['contextWrites']['to'] = $responseBody;

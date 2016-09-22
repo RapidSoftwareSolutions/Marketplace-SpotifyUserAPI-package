@@ -23,8 +23,39 @@ require __DIR__ . '/../src/dependencies.php';
 // Register middleware
 require __DIR__ . '/../src/middleware.php';
 
+// Register models
+require __DIR__ . '/../src/Models/paginationClass.php';
+
 // Register routes
 require __DIR__ . '/../src/routes/getAccessToken.php';
+require __DIR__ . '/../src/routes/refreshAccessToken.php';
+require __DIR__ . '/../src/routes/getTrackAudioFeatures.php';
+require __DIR__ . '/../src/routes/getFeaturedPlaylists.php';
+require __DIR__ . '/../src/routes/getNewReleases.php';
+require __DIR__ . '/../src/routes/getCategories.php';
+require __DIR__ . '/../src/routes/getCategory.php';
+require __DIR__ . '/../src/routes/getCategoryPlaylists.php';
+require __DIR__ . '/../src/routes/getCurrentUserProfile.php';
+require __DIR__ . '/../src/routes/getFollowedArtists.php';
+require __DIR__ . '/../src/routes/followUser.php';
+require __DIR__ . '/../src/routes/followArtist.php';
+require __DIR__ . '/../src/routes/unfollowUser.php';
+require __DIR__ . '/../src/routes/unfollowArtist.php';
+require __DIR__ . '/../src/routes/checkFollowUser.php';
+require __DIR__ . '/../src/routes/checkFollowArtist.php';
+require __DIR__ . '/../src/routes/followPlaylist.php';
+require __DIR__ . '/../src/routes/unfollowPlaylist.php';
+require __DIR__ . '/../src/routes/saveTrack.php';
+require __DIR__ . '/../src/routes/getUserSavedTracks.php';
+require __DIR__ . '/../src/routes/removeSavedTracks.php';
+require __DIR__ . '/../src/routes/checkSavedTrack.php';
+require __DIR__ . '/../src/routes/saveAlbumForUser.php';
+require __DIR__ . '/../src/routes/getUserSavedAlbums.php';
+require __DIR__ . '/../src/routes/removeSavedAlbum.php';
+require __DIR__ . '/../src/routes/checkSavedAlbum.php';
+require __DIR__ . '/../src/routes/getUserTopArtists.php';
+require __DIR__ . '/../src/routes/getUserTopTracks.php';
+require __DIR__ . '/../src/routes/getRecommendations.php';
 require __DIR__ . '/../src/routes/metadata.php';
 
 // Run app
