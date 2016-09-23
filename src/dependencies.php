@@ -23,3 +23,9 @@ $container['httpClient'] = function() {
     $guzzle = new GuzzleHttp\Client();
     return $guzzle;
 };
+
+//Pagination
+$container['pager'] = function() {
+    $pager = new Models\NextPage();
+    return $pager;
+};

@@ -17,14 +17,15 @@ session_start();
 $settings = require __DIR__ . '/../src/settings.php';
 $app = new \Slim\App($settings);
 
+// Register models
+require __DIR__ . '/../src/Models/paginationClass.php';
+
 // Set up dependencies
 require __DIR__ . '/../src/dependencies.php';
 
 // Register middleware
 require __DIR__ . '/../src/middleware.php';
 
-// Register models
-require __DIR__ . '/../src/Models/paginationClass.php';
 
 // Register routes
 require __DIR__ . '/../src/routes/getAccessToken.php';
@@ -47,7 +48,7 @@ require __DIR__ . '/../src/routes/followPlaylist.php';
 require __DIR__ . '/../src/routes/unfollowPlaylist.php';
 require __DIR__ . '/../src/routes/saveTrack.php';
 require __DIR__ . '/../src/routes/getUserSavedTracks.php';
-require __DIR__ . '/../src/routes/removeSavedTracks.php';
+require __DIR__ . '/../src/routes/removeSavedTrack.php';
 require __DIR__ . '/../src/routes/checkSavedTrack.php';
 require __DIR__ . '/../src/routes/saveAlbumForUser.php';
 require __DIR__ . '/../src/routes/getUserSavedAlbums.php';

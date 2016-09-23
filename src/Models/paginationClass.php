@@ -1,14 +1,10 @@
 <?php
-use GuzzleHttp\Client;
-
 namespace Models;
-require __DIR__ . '/../../src/dependencies.php';
 
-
-Class Next {
+Class NextPage {
     protected $all_data = [];
     
-    public function page($url, $headers='', $query='') {
+    public function page($url, $headers='', $query='', $next) {
         
         if($url) {
             $params = explode('?',$url);
@@ -28,8 +24,9 @@ Class Next {
 
             $rawBody = json_decode($resp->getBody());
             $this->all_data[] = $rawBody;
-            if($rawBody->albums->next) {
-                $this->page($rawBody->albums->next, $headers, $query);
+
+            if(!empty($rawBody->$next->next)) {
+                $this->page($rawBody->$next->next, $headers, $query, $next);
             }
         }
         return $this->all_data;

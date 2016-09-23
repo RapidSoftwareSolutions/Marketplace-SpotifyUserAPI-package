@@ -38,8 +38,7 @@ $app->post('/api/SpotifyUserAPI/unfollowPlaylist', function ($request, $response
 
         $resp = $client->delete( $query_str, 
             [
-                'headers' => $headers,
-                'query' => $query
+                'headers' => $headers
             ]);
         $responseBody = $resp->getBody()->getContents();
         $code = $resp->getStatusCode();

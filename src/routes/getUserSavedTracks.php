@@ -25,6 +25,7 @@ $app->post('/api/SpotifyUserAPI/getUserSavedTracks', function ($request, $respon
     if(!empty($post_data['args']['market'])) {
         $query['market'] = $post_data['args']['market'];
     }
+    $query['limit'] = 50;
     
     $headers['Authorization'] = 'Bearer ' . $post_data['args']['access_token'];
     $headers['Content-Type'] = 'application/json';
@@ -40,20 +41,34 @@ $app->post('/api/SpotifyUserAPI/getUserSavedTracks', function ($request, $respon
                 'query' => $query
             ]);
         $responseBody = $resp->getBody()->getContents();
+        $rawBody = json_decode($resp->getBody());
+        
+        $all_data[] = $rawBody;
+        
+        if($rawBody->items->next != '' || $rawBody->items->next != 'null') {
+            $pagin = $this->pager;
+            $ret = $pagin->page($rawBody->items->next, $headers, $query, 'items');
+        }
+        
+        $all_data+=$ret;
         $code = $resp->getStatusCode();
-        if(!empty(json_decode($responseBody)) && $code == '200') {
+        if(!empty(json_decode($all_data)) && $code == '200') {
             $result['callback'] = 'success';
+            $result['contextWrites']['to'] = json_decode($all_data);
+        } elseif($code != '200') {
+            $result['callback'] = 'error';
             $result['contextWrites']['to'] = $responseBody;
         } else {
-            $result['callback'] = 'error';
+            $result['callback'] = 'success';
             $result['contextWrites']['to'] = $responseBody;
         }
 
     } catch (\GuzzleHttp\Exception\ClientException $exception) {
 
         $responseBody = $exception->getResponse()->getBody();
+        $responseBody = json_decode($responseBody)->error->message;
         $result['callback'] = 'error';
-        $result['contextWrites']['to'] = json_decode($responseBody);
+        $result['contextWrites']['to'] = $responseBody;
 
     }
     

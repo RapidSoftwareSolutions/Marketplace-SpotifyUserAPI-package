@@ -21,7 +21,8 @@ $app->post('/api/SpotifyUserAPI/getFollowedArtists', function ($request, $respon
         return $response->withHeader('Content-type', 'application/json')->withStatus(200)->withJson($result);
     }
     
-    
+    $query['limit'] = 50;
+    $query['type'] = 'artist';
     $headers['Authorization'] = 'Bearer ' . $post_data['args']['access_token'];
     $query_str = 'https://api.spotify.com/v1/me/following?type=artist';
     
@@ -31,15 +32,29 @@ $app->post('/api/SpotifyUserAPI/getFollowedArtists', function ($request, $respon
 
         $resp = $client->get( $query_str, 
             [
-                'headers' => $headers
+                'headers' => $headers,
+                'query' => $query
             ]);
         $responseBody = $resp->getBody()->getContents();
+        $rawBody = json_decode($resp->getBody());
+        
+        $all_data[] = $rawBody;
+        
+        if($rawBody->artists->next != '' || $rawBody->artists->next != 'null') {
+            $pagin = $this->pager;
+            $ret = $pagin->page($rawBody->artists->next, $headers, $query, 'artists');
+        }
+        
+        $all_data+=$ret;
         $code = $resp->getStatusCode();
-        if(!empty(json_decode($responseBody)) && $code == '200') {
+        if(!empty(json_decode($all_data)) && $code == '200') {
             $result['callback'] = 'success';
+            $result['contextWrites']['to'] = json_decode($all_data);
+        } elseif($code != '200') {
+            $result['callback'] = 'error';
             $result['contextWrites']['to'] = $responseBody;
         } else {
-            $result['callback'] = 'error';
+            $result['callback'] = 'success';
             $result['contextWrites']['to'] = $responseBody;
         }
 

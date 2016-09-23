@@ -1,5 +1,4 @@
 <?php
-use Models;
 
 $app->post('/api/SpotifyUserAPI/getNewReleases', function ($request, $response, $args) {
     $settings =  $this->settings;
@@ -51,14 +50,14 @@ $app->post('/api/SpotifyUserAPI/getNewReleases', function ($request, $response, 
         $all_data[] = $rawBody;
         
         if($rawBody->albums->next != '' || $rawBody->albums->next != 'null') {
-            $pagin = new Models\Next();
-            $ret = $pagin->page($rawBody->albums->next, $headers, $query);
+            $pagin = $this->pager;
+            $ret = $pagin->page($rawBody->albums->next, $headers, $query, 'albums');
         }
         
         $all_data+=$ret;
         
         $code = $resp->getStatusCode();
-        if(!empty(json_decode($responseBody)) && $code == '200') {
+        if(!empty(json_encode($all_data)) && $code == '200') {
             $result['callback'] = 'success';
             $result['contextWrites']['to'] = json_encode($all_data);
         } else {

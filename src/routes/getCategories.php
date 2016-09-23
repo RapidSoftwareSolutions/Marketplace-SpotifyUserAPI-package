@@ -28,6 +28,7 @@ $app->post('/api/SpotifyUserAPI/getCategories', function ($request, $response, $
     if(!empty($post_data['args']['locale'])) {
         $query['locale'] = $post_data['args']['locale'];
     }
+    $query['limit'] = 50;
     
     $headers['Authorization'] = 'Bearer ' . $post_data['args']['access_token'];
     $query_str = 'https://api.spotify.com/v1/browse/categories';
@@ -42,12 +43,25 @@ $app->post('/api/SpotifyUserAPI/getCategories', function ($request, $response, $
                 'query' => $query
             ]);
         $responseBody = $resp->getBody()->getContents();
+        $rawBody = json_decode($resp->getBody());
+        
+        $all_data[] = $rawBody;
+        
+        if($rawBody->categories->next != '' || $rawBody->categories->next != 'null') {
+            $pagin = $this->pager;
+            $ret = $pagin->page($rawBody->categories->next, $headers, $query, 'categories');
+        }
+        
+        $all_data+=$ret;
         $code = $resp->getStatusCode();
-        if(!empty(json_decode($responseBody)) && $code == '200') {
+        if(!empty(json_encode($all_data)) && $code == '200') {
             $result['callback'] = 'success';
+            $result['contextWrites']['to'] = json_encode($all_data);
+        } elseif($code != '200') {
+            $result['callback'] = 'error';
             $result['contextWrites']['to'] = $responseBody;
         } else {
-            $result['callback'] = 'error';
+            $result['callback'] = 'success';
             $result['contextWrites']['to'] = $responseBody;
         }
 

@@ -4,8 +4,10 @@ Through the Spotify Web API your applications can retrieve and manage Spotify co
 * Credentials: client_id, client_key
 
 ## How to get credentials: 
-0. Item one 
-1. Item two
+0. Go to [Spotify DEvelopers section](https://developer.spotify.com/my-applications) 
+1. Login or sigh up to create new applications and manage your Spotify credentials to authenticate your requests.
+2. [Create new app](https://developer.spotify.com/my-applications/#!/applications/create)
+3. When you register an application on your account, two credentials are created for you - **Client ID** and **Client Secret**. You can see the credentials on the application’s details page.
 
 ## TOC: 
 * [getAccessToken](#getAccessToken)
@@ -28,7 +30,7 @@ Through the Spotify Web API your applications can retrieve and manage Spotify co
 * [unfollowPlaylist](#unfollowPlaylist)
 * [saveTrack](#saveTrack)
 * [getUserSavedTracks](#getUserSavedTracks)
-* [removeSavedTracks](#removeSavedTracks)
+* [removeSavedTrack](#removeSavedTrack)
 * [checkSavedTrack](#checkSavedTrack)
 * [saveAlbumForUser](#saveAlbumForUser)
 * [getUserSavedAlbums](#getUserSavedAlbums)
@@ -598,8 +600,8 @@ Method description
 }
 ```
 
-<a name="removeSavedTracks"/>
-## SpotifyUserAPI.removeSavedTracks
+<a name="removeSavedTrack"/>
+## SpotifyUserAPI.removeSavedTrack
 Method description
 
 | Field       | Type  | Description
