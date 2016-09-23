@@ -53,9 +53,9 @@ Method description
 
 #### Request example
 ```json
-{	"client_id": "xxxxxxx",
-	"client_key": "xxxxxxxx",
-	"code": "xxxxxxxxxx",
+{	"client_id": "...",
+	"client_key": "...",
+	"code": "...",
 	"redirect_uri": "http://site.com/redirect_uri"
 }
 ```
@@ -65,8 +65,14 @@ Method description
 	"callback":"success",
 	"contextWrites":{
 		"#":{
-			"to":"{"access_token":"BQATTLiH7d9Yzyt1JIbYRc7p4-CDBZOpnWkBqF1hiKSy9X4FC8negQ4eTmkRzzGFSFhpHTxWj9h9sEr9ZQDdEEUkRnjBCED-qI-35P1pIhNYFLbFN5BAvkFFnLQOV-XIA_UAAwOuTMkyT1_RXJhAS2S3QI_VtsFBLRkwMK3SdUyKES3K3-QF2eRVTbKtSTIWErg4DGv6l1_JC70Gp4JNtNBIHzazgPCE4FSiw3Xj","token_type":"Bearer","expires_in":3600,"refresh_token":"AQDn9ymEoKLJYBJ181wxWbeJmdcWAkPI6XF_nNM2YCyosMfpaZD_h34MmsAlH4_L5fmxLysDPt5KQopYwEF2yPEEgPUEhvUdaIKV0LkmsIhQszNog8OsL-Bnqs0NiVE43ZQ","scope":"user-top-read"}"
-		}
+                        "to": "{
+                            "access_token": "NgCXRK...MzYjw",
+                            "token_type": "Bearer",
+                            "scope": "user-read-private user-read-email",
+                            "expires_in": 3600,
+                            "refresh_token": "NgAagA...Um_SHo"
+                         }
+                 }
 	}
 }
 ```
@@ -94,8 +100,13 @@ Method description
 	"callback":"success",
 	"contextWrites":{
 		"#":{
-			"to":"..."
-		}
+                        "to": "{
+                            "access_token": "NgA6ZcYI...ixn8bUQ",
+                            "token_type": "Bearer",
+                            "scope": "user-read-private user-read-email",
+                            "expires_in": 3600
+                         }"
+                 }
 	}
 }
 ```
@@ -121,7 +132,26 @@ Method description
 	"callback":"success",
 	"contextWrites":{
 		"#":{
-			"to":"..."
+			"to":"{
+                            'danceability': 0.735,
+                            'energy' 0.578,
+                            'key': 5,
+                            'loudness": -11.84,
+                            'mode': 0,
+                            'speechiness': 0.0461,
+                            'acousticness': 0.514,
+                            'instrumentalness': 0.0902,
+                            'liveness': 0.159,
+                            'valence': 0.624,
+                            'tempo': 98.002,
+                            'type': 'audio_features',
+                            'id': "06AKEBrKUckW0KREUWRnvT',
+                            'uri': "'spotify:track:06AKEBrKUckW0KREUWRnvT',
+                            'track_href': 'https://api.spotify.com/v1/tracks/06AKEBrKUckW0KREUWRnvT',
+                            'analysis_url': 'http://echonest-analysis.s3.amazonaws.com/TR/xZIVRgimIx9_iJFqTriVhCm_4unjh7tZAglpO5D-xS4xNkvxq70uCFAtuoVYTaIeHbWoLKvCB6W-kvd9E=/3/full.json?AWSAccessKeyId=AKIAJRDFEY23UEVW42BQ&Expires=1455893394&Signature=rmceqCXLMbPrXt9RTIJwk%2BQzxoY%3D',
+                            'duration_ms': 255349,
+                            'time_signature': 4 
+                        }"
 		}
 	}
 }
