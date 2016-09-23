@@ -53,10 +53,10 @@ Method description
 
 #### Request example
 ```json
-{	"client_id": "...",
-	"client_key": "...",
-	"code": "...",
-	"redirect_uri": "..."
+{	"client_id": "xxxxxxx",
+	"client_key": "xxxxxxxx",
+	"code": "xxxxxxxxxx",
+	"redirect_uri": "http://site.com/redirect_uri"
 }
 ```
 #### Response example
@@ -65,7 +65,7 @@ Method description
 	"callback":"success",
 	"contextWrites":{
 		"#":{
-			"to":"..."
+			"to":"{"access_token":"BQATTLiH7d9Yzyt1JIbYRc7p4-CDBZOpnWkBqF1hiKSy9X4FC8negQ4eTmkRzzGFSFhpHTxWj9h9sEr9ZQDdEEUkRnjBCED-qI-35P1pIhNYFLbFN5BAvkFFnLQOV-XIA_UAAwOuTMkyT1_RXJhAS2S3QI_VtsFBLRkwMK3SdUyKES3K3-QF2eRVTbKtSTIWErg4DGv6l1_JC70Gp4JNtNBIHzazgPCE4FSiw3Xj","token_type":"Bearer","expires_in":3600,"refresh_token":"AQDn9ymEoKLJYBJ181wxWbeJmdcWAkPI6XF_nNM2YCyosMfpaZD_h34MmsAlH4_L5fmxLysDPt5KQopYwEF2yPEEgPUEhvUdaIKV0LkmsIhQszNog8OsL-Bnqs0NiVE43ZQ","scope":"user-top-read"}"
 		}
 	}
 }
