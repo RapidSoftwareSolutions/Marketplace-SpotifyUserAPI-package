@@ -68,7 +68,7 @@ Exchange an authorization code received when the user signs into the app for an 
                         "to": "{
                             'access_token': 'NgCXRK...MzYjw',
                             'token_type': 'Bearer',
-                            'scope": 'user-read-private user-read-email',
+                            'scope': 'user-read-private user-read-email',
                             'expires_in': 3600,
                             'refresh_token': 'NgAagA...Um_SHo'
                          }
@@ -101,7 +101,7 @@ Access tokens are deliberately set to expire after a short time, after which new
 	"contextWrites":{
 		"#":{
                         "to": "{
-                            "access_token': 'NgA6ZcYI...ixn8bUQ',
+                            'access_token': 'NgA6ZcYI...ixn8bUQ',
                             'token_type': 'Bearer',
                             'scope': 'user-read-private user-read-email',
                             'expires_in': 3600
@@ -145,8 +145,8 @@ Get audio feature information for a single track identified by its unique Spotif
                             'valence': 0.624,
                             'tempo': 98.002,
                             'type': 'audio_features',
-                            'id': "06AKEBrKUckW0KREUWRnvT',
-                            'uri': "'spotify:track:06AKEBrKUckW0KREUWRnvT',
+                            'id': '06AKEBrKUckW0KREUWRnvT',
+                            'uri': 'spotify:track:06AKEBrKUckW0KREUWRnvT',
                             'track_href': 'https://api.spotify.com/v1/tracks/06AKEBrKUckW0KREUWRnvT',
                             'analysis_url': 'http://echonest-analysis.s3.amazonaws.com/TR/xZIVRgimIx9_iJFqTriVhCm_4unjh7tZAglpO5D-xS4xNkvxq70uCFAtuoVYTaIeHbWoLKvCB6W-kvd9E=/3/full.json?AWSAccessKeyId=AKIAJRDFEY23UEVW42BQ&Expires=1455893394&Signature=rmceqCXLMbPrXt9RTIJwk%2BQzxoY%3D',
                             'duration_ms': 255349,
