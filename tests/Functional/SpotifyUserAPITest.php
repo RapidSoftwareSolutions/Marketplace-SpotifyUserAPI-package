@@ -279,8 +279,7 @@ class SpotifyUserAPITest extends BaseTestCase
 
         $this->assertEquals(200, $response->getStatusCode());
         $this->assertNotEmpty($response->getBody());
-        $this->assertEquals(401, json_decode($response->getBody())->contextWrites->to->error->status);
-        $this->assertEquals('Invalid access token', json_decode($response->getBody())->contextWrites->to->error->message);
+        $this->assertEquals('Invalid access token', json_decode($response->getBody())->contextWrites->to);
         
     }
     
@@ -289,7 +288,7 @@ class SpotifyUserAPITest extends BaseTestCase
         $post_data['args']['access_token'] = $this->client_id;
         $post_data['args']['id'] = '12121212';
         
-        $response = $this->runApp('POST', '/api/SpotifyUserAPI/removeSavedTracks', $post_data);
+        $response = $this->runApp('POST', '/api/SpotifyUserAPI/removeSavedTrack', $post_data);
 
         $this->assertEquals(200, $response->getStatusCode());
         $this->assertNotEmpty($response->getBody());
