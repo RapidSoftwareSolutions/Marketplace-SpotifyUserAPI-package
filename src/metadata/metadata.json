@@ -16,12 +16,12 @@
             "args":[
                 {
                     "name": "client_id",
-                    "type": "String",
+                    "type": "credentials",
                     "info": "The Client ID obtained from Spotify."
                 },
                 {
                     "name": "client_key",
-                    "type": "String",
+                    "type": "credentials",
                     "info": "The Client Secret obtained from Spotify."
                 },
                 {
@@ -51,12 +51,12 @@
             "args":[
                 {
                     "name": "client_id",
-                    "type": "String",
+                    "type": "credentials",
                     "info": "The Client ID obtained from Spotify."
                 },
                 {
                     "name": "client_key",
-                    "type": "String",
+                    "type": "credentials",
                     "info": "The Client Secret obtained from Spotify."
                 },
                 {

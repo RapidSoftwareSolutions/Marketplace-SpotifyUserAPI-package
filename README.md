@@ -46,8 +46,8 @@ Exchange an authorization code received when the user signs into the app for an 
 
 | Field       | Type  | Description
 |-------------|-------|----------
-| client_id   | String| The Client ID obtained from Spotify.
-| client_key  | String| The Client Secret obtained from Spotify.
+| client_id   | credentials| The Client ID obtained from Spotify.
+| client_key  | credentials| The Client Secret obtained from Spotify.
 | code        | String| An authorization code that can be exchanged for an access token.
 | redirect_uri| String| The value of redirect_uri here must exactly match one of the values you entered when you registered your application, including upper/lowercase, terminating slashes, etc
 
@@ -83,8 +83,8 @@ Access tokens are deliberately set to expire after a short time, after which new
 
 | Field        | Type  | Description
 |--------------|-------|----------
-| client_id    | String| The Client ID obtained from Spotify.
-| client_key   | String| The Client Secret obtained from Spotify.
+| client_id    | credentials| The Client ID obtained from Spotify.
+| client_key   | credentials| The Client Secret obtained from Spotify.
 | refresh_token| String| The refresh token returned from the getAccessToken method.
 
 #### Request example
