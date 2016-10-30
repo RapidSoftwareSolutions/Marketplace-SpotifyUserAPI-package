@@ -279,7 +279,7 @@ class SpotifyUserAPITest extends BaseTestCase
 
         $this->assertEquals(200, $response->getStatusCode());
         $this->assertNotEmpty($response->getBody());
-        $this->assertEquals('Invalid access token', json_decode($response->getBody())->contextWrites->to);
+        $this->assertEquals('Invalid access token', json_decode($response->getBody())->contextWrites->to->error->message);
         
     }
     

@@ -4,10 +4,14 @@ $app->post('/api/SpotifyUserAPI/getNewReleases', function ($request, $response, 
     $settings =  $this->settings;
     
     $data = $request->getBody();
-    $post_data = json_decode($data, true);
-    if(!isset($post_data['args'])) {
-        $data = $request->getParsedBody();
-        $post_data = $data;
+
+    if($data=='') {
+        $post_data = $request->getParsedBody();
+    } else {
+        $toJson = $this->toJson;
+        $data = $toJson->normalizeJson($data); 
+        $data = str_replace('\"', '"', $data);
+        $post_data = json_decode($data, true);
     }
     
     $error = [];
@@ -59,10 +63,10 @@ $app->post('/api/SpotifyUserAPI/getNewReleases', function ($request, $response, 
         $code = $resp->getStatusCode();
         if(!empty(json_encode($all_data)) && $code == '200') {
             $result['callback'] = 'success';
-            $result['contextWrites']['to'] = json_encode($all_data);
+            $result['contextWrites']['to'] = is_array($all_data) ? $all_data : json_decode($all_data);
         } else {
-            $result['callback'] = 'error';
-            $result['contextWrites']['to'] = $responseBody;
+            $result['callback'] = 'success';
+            $result['contextWrites']['to'] = is_array($responseBody) ? $responseBody : json_decode($responseBody);
         }
 
     } catch (\GuzzleHttp\Exception\ClientException $exception) {
@@ -71,9 +75,19 @@ $app->post('/api/SpotifyUserAPI/getNewReleases', function ($request, $response, 
         $result['callback'] = 'error';
         $result['contextWrites']['to'] = json_decode($responseBody);
 
+    } catch (GuzzleHttp\Exception\ServerException $exception) {
+
+        $responseBody = $exception->getResponse()->getBody(true);
+        $result['callback'] = 'error';
+        $result['contextWrites']['to'] = json_decode($responseBody);
+
+    } catch (GuzzleHttp\Exception\BadResponseException $exception) {
+
+        $responseBody = $exception->getResponse()->getBody(true);
+        $result['callback'] = 'error';
+        $result['contextWrites']['to'] = json_decode($responseBody);
+
     }
-    
-    
 
     return $response->withHeader('Content-type', 'application/json')->withStatus(200)->withJson($result);
 });
