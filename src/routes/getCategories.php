@@ -51,12 +51,16 @@ $app->post('/api/SpotifyUserAPI/getCategories', function ($request, $response, $
         
         $all_data[] = $rawBody;
         
-        if($rawBody->categories->next != '' || $rawBody->categories->next != 'null') {
-            $pagin = $this->pager;
-            $ret = $pagin->page($rawBody->categories->next, $headers, $query, 'categories');
+        if(isset($rawBody->categories)) {
+            if(isset($rawBody->categories->next)) { 
+                if($rawBody->categories->next != '' || $rawBody->categories->next != 'null') {
+                    $pagin = $this->pager;
+                    $ret = $pagin->page($rawBody->categories->next, $headers, $query, 'categories');
+                    
+                    $all_data+=$ret;
+                }
+            }
         }
-        
-        $all_data+=$ret;
         $code = $resp->getStatusCode();
         if(!empty(json_encode($all_data)) && $code == '200') {
             $result['callback'] = 'success';

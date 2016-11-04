@@ -44,12 +44,18 @@ $app->post('/api/SpotifyUserAPI/getFollowedArtists', function ($request, $respon
         
         $all_data[] = $rawBody;
         
-        if($rawBody->artists->next != '' || $rawBody->artists->next != 'null') {
-            $pagin = $this->pager;
-            $ret = $pagin->page($rawBody->artists->next, $headers, $query, 'artists');
+        if(isset($rawBody->artists)) {
+            if(isset($rawBody->artists->next)) { 
+                if($rawBody->artists->next != '' || $rawBody->artists->next != 'null') {
+                    $pagin = $this->pager;
+                    $ret = $pagin->page($rawBody->artists->next, $headers, $query, 'artists');
+                    
+                    $all_data+=$ret;
+                }
+            }
         }
         
-        $all_data+=$ret;
+        
         $code = $resp->getStatusCode();
         if(!empty(json_encode($all_data)) && $code == '200') {
             $result['callback'] = 'success';

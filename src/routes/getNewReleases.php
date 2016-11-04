@@ -53,12 +53,16 @@ $app->post('/api/SpotifyUserAPI/getNewReleases', function ($request, $response, 
         
         $all_data[] = $rawBody;
         
-        if($rawBody->albums->next != '' || $rawBody->albums->next != 'null') {
-            $pagin = $this->pager;
-            $ret = $pagin->page($rawBody->albums->next, $headers, $query, 'albums');
+        if(isset($rawBody->albums)) {
+            if(isset($rawBody->albums->next)) { 
+                if($rawBody->albums->next != '' || $rawBody->albums->next != 'null') {
+                    $pagin = $this->pager;
+                    $ret = $pagin->page($rawBody->albums->next, $headers, $query, 'albums');
+                    
+                    $all_data+=$ret;
+                }
+            }
         }
-        
-        $all_data+=$ret;
         
         $code = $resp->getStatusCode();
         if(!empty(json_encode($all_data)) && $code == '200') {

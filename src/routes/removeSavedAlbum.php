@@ -47,7 +47,7 @@ $app->post('/api/SpotifyUserAPI/removeSavedAlbum', function ($request, $response
         $code = $resp->getStatusCode();
         if($resp->getStatusCode() == '200') {
             $result['callback'] = 'success';
-            $result['contextWrites']['to'] = is_array($responseBody) ? $responseBody : json_decode($responseBody);
+            $result['contextWrites']['to'] = "removed";
         } else {
             $result['callback'] = 'error';
             $result['contextWrites']['to'] = is_array($responseBody) ? $responseBody : json_decode($responseBody);

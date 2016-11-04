@@ -49,12 +49,16 @@ $app->post('/api/SpotifyUserAPI/getUserSavedAlbums', function ($request, $respon
         
         $all_data[] = $rawBody;
         
-        if($rawBody->items->next != '' || $rawBody->items->next != 'null') {
-            $pagin = $this->pager;
-            $ret = $pagin->page($rawBody->items->next, $headers, $query, 'items');
+        if(isset($rawBody->items)) {
+            if(isset($rawBody->items->next)) { 
+                if($rawBody->items->next != '' || $rawBody->items->next != 'null') {
+                    $pagin = $this->pager;
+                    $ret = $pagin->page($rawBody->items->next, $headers, $query, 'items');
+                    
+                    $all_data+=$ret;
+                }
+            }
         }
-        
-        $all_data+=$ret;
         $code = $resp->getStatusCode();
         if($resp->getStatusCode() == '200') {
             $result['callback'] = 'success';

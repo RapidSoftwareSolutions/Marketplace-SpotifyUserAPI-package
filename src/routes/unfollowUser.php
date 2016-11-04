@@ -49,7 +49,7 @@ $app->post('/api/SpotifyUserAPI/unfollowUser', function ($request, $response, $a
         $code = $resp->getStatusCode();
         if($resp->getStatusCode() == '204') {
             $result['callback'] = 'success';
-            $result['contextWrites']['to'] = is_array($responseBody) ? $responseBody : json_decode($responseBody);
+            $result['contextWrites']['to'] = "unfollowed";
         } else {
             $result['callback'] = 'error';
             $result['contextWrites']['to'] = is_array($responseBody) ? $responseBody : json_decode($responseBody);

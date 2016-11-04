@@ -54,12 +54,17 @@ $app->post('/api/SpotifyUserAPI/getFeaturedPlaylists', function ($request, $resp
         
         $all_data[] = $rawBody;
         
-        if($rawBody->playlists->next != '' || $rawBody->playlists->next != 'null') {
-            $pagin = $this->pager;
-            $ret = $pagin->page($rawBody->playlists->next, $headers, $query, 'playlists');
+        if(isset($rawBody->playlists)) {
+            if(isset($rawBody->playlists->next)) { 
+                if($rawBody->playlists->next != '' || $rawBody->playlists->next != 'null') {
+                    $pagin = $this->pager;
+                    $ret = $pagin->page($rawBody->playlists->next, $headers, $query, 'playlists');
+                    
+                    $all_data+=$ret;
+                }
+            }
         }
-        
-        $all_data+=$ret;
+
         $code = $resp->getStatusCode();
         if(!empty(json_encode($all_data)) && $code == '200') {
             $result['callback'] = 'success';
