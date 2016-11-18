@@ -1,6 +1,6 @@
 <?php
 
-$app->post('/api/SpotifyUserAPI/removeSavedTrack', function ($request, $response, $args) {
+$app->post('/api/SpotifyUserAPI/removeSavedTracks', function ($request, $response, $args) {
     $settings =  $this->settings;
     
     $data = $request->getBody();
