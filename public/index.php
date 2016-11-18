@@ -49,7 +49,7 @@ require __DIR__ . '/../src/routes/followPlaylist.php';
 require __DIR__ . '/../src/routes/unfollowPlaylist.php';
 require __DIR__ . '/../src/routes/saveTrack.php';
 require __DIR__ . '/../src/routes/getUserSavedTracks.php';
-require __DIR__ . '/../src/routes/removeSavedTrack.php';
+require __DIR__ . '/../src/routes/removeSavedTracks.php';
 require __DIR__ . '/../src/routes/checkSavedTrack.php';
 require __DIR__ . '/../src/routes/saveAlbumForUser.php';
 require __DIR__ . '/../src/routes/getUserSavedAlbums.php';
