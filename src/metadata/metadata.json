@@ -6,1016 +6,867 @@
     "repo": "https://github.com/RapidSoftwareSolutions/Marketplace-SpotifyUserAPI-package",
     "accounts": {
         "domain": "spotify.com",
-        "credentials": [
-            "client_id",
-            "client_key"
-        ]
+        "credentials": ["client_id", "client_key"]
     },
     "blocks": [{
-            "name":"getAccessToken",
-            "args":[
-                {
+            "name": "getAccessToken",
+            "args": [{
                     "name": "client_id",
                     "type": "credentials",
-                    "info": "The Client ID obtained from Spotify."
-                },
-                {
+                    "info": "The Client ID obtained from Spotify.",
+                    "required": true
+                }, {
                     "name": "client_key",
                     "type": "credentials",
-                    "info": "The Client Secret obtained from Spotify."
-                },
-                {
+                    "info": "The Client Secret obtained from Spotify.",
+                    "required": true
+                }, {
                     "name": "code",
                     "type": "String",
-                    "info": "An authorization code that can be exchanged for an access token."
-                },
-                {
+                    "info": "An authorization code that can be exchanged for an access token.",
+                    "required": true
+                }, {
                     "name": "redirect_uri",
                     "type": "String",
-                    "info": "The value of redirect_uri here must exactly match one of the values you entered when you registered your application, including upper/lowercase, terminating slashes, etc"
-                }
-            ],
-            "callbacks":[
-                {
-                    "name":"error",
+                    "info": "The value of redirect_uri here must exactly match one of the values you entered when you registered your application, including upper\/lowercase, terminating slashes, etc",
+                    "required": true
+                }],
+            "callbacks": [{
+                    "name": "error",
                     "info": "Error"
-                },
-                {
-                    "name":"success",
-                    "info": "Success => channels: Array <string>"
-                }
-            ]
-        },
-        {
-            "name":"refreshAccessToken",
-            "args":[
-                {
+                }, {
+                    "name": "success",
+                    "info": "Success"
+                }]
+        }, {
+            "name": "refreshAccessToken",
+            "args": [{
                     "name": "client_id",
                     "type": "credentials",
-                    "info": "The Client ID obtained from Spotify."
-                },
-                {
+                    "info": "The Client ID obtained from Spotify.",
+                    "required": true
+                }, {
                     "name": "client_key",
                     "type": "credentials",
-                    "info": "The Client Secret obtained from Spotify."
-                },
-                {
+                    "info": "The Client Secret obtained from Spotify.",
+                    "required": true
+                }, {
                     "name": "refresh_token",
                     "type": "String",
-                    "info": "The refresh token returned from the getAccessToken method."
-                }
-            ],
-            "callbacks":[
-                {
-                    "name":"error",
+                    "info": "The refresh token returned from the getAccessToken method.",
+                    "required": true
+                }],
+            "callbacks": [{
+                    "name": "error",
                     "info": "Error"
-                },
-                {
-                    "name":"success",
-                    "info": "Success => channels: Array <string>"
-                }
-            ]
-        },
-        {
-            "name":"getTrackAudioFeatures",
-            "args":[
-                {
+                }, {
+                    "name": "success",
+                    "info": "Success"
+                }]
+        }, {
+            "name": "getTrackAudioFeatures",
+            "args": [{
                     "name": "access_token",
                     "type": "String",
-                    "info": "A valid access token from the getAccessToken method"
-                },
-                {
+                    "info": "A valid access token from the getAccessToken method",
+                    "required": true
+                }, {
                     "name": "id",
                     "type": "String",
-                    "info": "The Spotify ID for the track"
-                }
-            ],
-            "callbacks":[
-                {
-                    "name":"error",
+                    "info": "The Spotify ID for the track",
+                    "required": true
+                }],
+            "callbacks": [{
+                    "name": "error",
                     "info": "Error"
-                },
-                {
-                    "name":"success",
-                    "info": "Success => channels: Array <string>"
-                }
-            ]
-        },
-        {
-            "name":"getFeaturedPlaylists",
-            "args":[
-                {
+                }, {
+                    "name": "success",
+                    "info": "Success"
+                }]
+        }, {
+            "name": "getFeaturedPlaylists",
+            "args": [{
                     "name": "access_token",
                     "type": "String",
-                    "info": "A valid access token from the getAccessToken method"
-                },
-                {
+                    "info": "A valid access token from the getAccessToken method",
+                    "required": true
+                }, {
                     "name": "locale",
                     "type": "String",
-                    "info": "Optional: The desired language, consisting of a lowercase ISO 639 language code and an uppercase ISO 3166-1 alpha-2 country code, joined by an underscore."
-                },
-                {
+                    "info": "The desired language, consisting of a lowercase ISO 639 language code and an uppercase ISO 3166-1 alpha-2 country code, joined by an underscore.",
+                    "required": false
+                }, {
                     "name": "country",
                     "type": "String",
-                    "info": "Optional: A country: an ISO 3166-1 alpha-2 country code. Provide this parameter if you want the list of returned items to be relevant to a particular country."
-                },
-                {
+                    "info": "A country: an ISO 3166-1 alpha-2 country code. Provide this parameter if you want the list of returned items to be relevant to a particular country.",
+                    "required": false
+                }, {
                     "name": "timestamp",
                     "type": "String",
-                    "info": "Optional: A timestamp in ISO 8601 format: yyyy-MM-ddTHH:mm:ss. Use this parameter to specify the user's local time to get results tailored for that specific date and time in the day."
-                }
-            ],
-            "callbacks":[
-                {
-                    "name":"error",
+                    "info": "A timestamp in ISO 8601 format: yyyy-MM-ddTHH:mm:ss. Use this parameter to specify the user's local time to get results tailored for that specific date and time in the day.",
+                    "required": false
+                }],
+            "callbacks": [{
+                    "name": "error",
                     "info": "Error"
-                },
-                {
-                    "name":"success",
-                    "info": "Success => channels: Array <string>"
-                }
-            ]
-        },
-        {
-            "name":"getNewReleases",
-            "args":[
-                {
+                }, {
+                    "name": "success",
+                    "info": "Success"
+                }]
+        }, {
+            "name": "getNewReleases",
+            "args": [{
                     "name": "access_token",
                     "type": "String",
-                    "info": "A valid access token from the getAccessToken method"
-                },
-                {
+                    "info": "A valid access token from the getAccessToken method",
+                    "required": true
+                }, {
                     "name": "country",
                     "type": "String",
-                    "info": "Optional: A country: an ISO 3166-1 alpha-2 country code. Provide this parameter if you want the list of returned items to be relevant to a particular country."
-                }
-            ],
-            "callbacks":[
-                {
-                    "name":"error",
+                    "info": "A country: an ISO 3166-1 alpha-2 country code. Provide this parameter if you want the list of returned items to be relevant to a particular country.",
+                    "required": false
+                }],
+            "callbacks": [{
+                    "name": "error",
                     "info": "Error"
-                },
-                {
-                    "name":"success",
-                    "info": "Success => channels: Array <string>"
-                }
-            ]
-        },
-        {
-            "name":"getCategories",
-            "args":[
-                {
+                }, {
+                    "name": "success",
+                    "info": "Success"
+                }]
+        }, {
+            "name": "getCategories",
+            "args": [{
                     "name": "access_token",
                     "type": "String",
-                    "info": "A valid access token from the getAccessToken method"
-                },
-                {
+                    "info": "A valid access token from the getAccessToken method",
+                    "required": true
+                }, {
                     "name": "country",
                     "type": "String",
-                    "info": "Optional: A country: an ISO 3166-1 alpha-2 country code. Provide this parameter if you want the list of returned items to be relevant to a particular country."
-                },
-                {
+                    "info": "A country: an ISO 3166-1 alpha-2 country code. Provide this parameter if you want the list of returned items to be relevant to a particular country.",
+                    "required": false
+                }, {
                     "name": "locale",
                     "type": "String",
-                    "info": "Optional: The desired language, consisting of a lowercase ISO 639 language code and an uppercase ISO 3166-1 alpha-2 country code, joined by an underscore."
-                }
-            ],
-            "callbacks":[
-                {
-                    "name":"error",
+                    "info": "The desired language, consisting of a lowercase ISO 639 language code and an uppercase ISO 3166-1 alpha-2 country code, joined by an underscore.",
+                    "required": false
+                }],
+            "callbacks": [{
+                    "name": "error",
                     "info": "Error"
-                },
-                {
-                    "name":"success",
-                    "info": "Success => channels: Array <string>"
-                }
-            ]
-        },
-        {
-            "name":"getCategory",
-            "args":[
-                {
+                }, {
+                    "name": "success",
+                    "info": "Success"
+                }]
+        }, {
+            "name": "getCategory",
+            "args": [{
                     "name": "access_token",
                     "type": "String",
-                    "info": "A valid access token from the getAccessToken method"
-                },
-                {
+                    "info": "A valid access token from the getAccessToken method",
+                    "required": true
+                }, {
                     "name": "id",
                     "type": "String",
-                    "info": "The Spotify category ID for the category."
-                },
-                {
+                    "info": "The Spotify category ID for the category.",
+                    "required": true
+                }, {
                     "name": "country",
                     "type": "String",
-                    "info": "Optional: A country: an ISO 3166-1 alpha-2 country code. Provide this parameter if you want the list of returned items to be relevant to a particular country."
-                },
-                {
+                    "info": "A country: an ISO 3166-1 alpha-2 country code. Provide this parameter if you want the list of returned items to be relevant to a particular country.",
+                    "required": false
+                }, {
                     "name": "locale",
                     "type": "String",
-                    "info": "Optional: The desired language, consisting of a lowercase ISO 639 language code and an uppercase ISO 3166-1 alpha-2 country code, joined by an underscore."
-                }
-            ],
-            "callbacks":[
-                {
-                    "name":"error",
+                    "info": "The desired language, consisting of a lowercase ISO 639 language code and an uppercase ISO 3166-1 alpha-2 country code, joined by an underscore.",
+                    "required": false
+                }],
+            "callbacks": [{
+                    "name": "error",
                     "info": "Error"
-                },
-                {
-                    "name":"success",
-                    "info": "Success => channels: Array <string>"
-                }
-            ]
-        },
-        {
-            "name":"getCategoryPlaylists",
-            "args":[
-                {
+                }, {
+                    "name": "success",
+                    "info": "Success"
+                }]
+        }, {
+            "name": "getCategoryPlaylists",
+            "args": [{
                     "name": "access_token",
                     "type": "String",
-                    "info": "A valid access token from the getAccessToken method"
-                },
-                {
+                    "info": "A valid access token from the getAccessToken method",
+                    "required": true
+                }, {
                     "name": "id",
                     "type": "String",
-                    "info": "The Spotify category ID for the category."
-                },
-                {
+                    "info": "The Spotify category ID for the category.",
+                    "required": true
+                }, {
                     "name": "country",
                     "type": "String",
-                    "info": "Optional: A country: an ISO 3166-1 alpha-2 country code. Provide this parameter if you want the list of returned items to be relevant to a particular country."
-                }
-            ],
-            "callbacks":[
-                {
-                    "name":"error",
+                    "info": "A country: an ISO 3166-1 alpha-2 country code. Provide this parameter if you want the list of returned items to be relevant to a particular country.",
+                    "required": false
+                }],
+            "callbacks": [{
+                    "name": "error",
                     "info": "Error"
-                },
-                {
-                    "name":"success",
-                    "info": "Success => channels: Array <string>"
-                }
-            ]
-        },
-        {
-            "name":"getCurrentUserProfile",
-            "args":[
-                {
+                }, {
+                    "name": "success",
+                    "info": "Success"
+                }]
+        }, {
+            "name": "getCurrentUserProfile",
+            "args": [{
                     "name": "access_token",
                     "type": "String",
-                    "info": "A valid access token from the getAccessToken method"
-                }
-            ],
-            "callbacks":[
-                {
-                    "name":"error",
+                    "info": "A valid access token from the getAccessToken method",
+                    "required": true
+                }],
+            "callbacks": [{
+                    "name": "error",
                     "info": "Error"
-                },
-                {
-                    "name":"success",
-                    "info": "Success => channels: Array <string>"
-                }
-            ]
-        },
-        {
-            "name":"getFollowedArtists",
-            "args":[
-                {
+                }, {
+                    "name": "success",
+                    "info": "Success"
+                }]
+        }, {
+            "name": "getFollowedArtists",
+            "args": [{
                     "name": "access_token",
                     "type": "String",
-                    "info": "A valid access token from the getAccessToken method"
-                }
-            ],
-            "callbacks":[
-                {
-                    "name":"error",
+                    "info": "A valid access token from the getAccessToken method",
+                    "required": true
+                }],
+            "callbacks": [{
+                    "name": "error",
                     "info": "Error"
-                },
-                {
-                    "name":"success",
-                    "info": "Success => channels: Array <string>"
-                }
-            ]
-        },
-        {
-            "name":"followUser",
-            "args":[
-                {
+                }, {
+                    "name": "success",
+                    "info": "Success"
+                }]
+        }, {
+            "name": "followUser",
+            "args": [{
                     "name": "access_token",
                     "type": "String",
-                    "info": "A valid access token from the getAccessToken method"
-                },
-                {
+                    "info": "A valid access token from the getAccessToken method",
+                    "required": true
+                }, {
                     "name": "id",
                     "type": "String",
-                    "info": "User Spotify ID."
-                }
-            ],
-            "callbacks":[
-                {
-                    "name":"error",
+                    "info": "User Spotify ID.",
+                    "required": true
+                }],
+            "callbacks": [{
+                    "name": "error",
                     "info": "Error"
-                },
-                {
-                    "name":"success",
-                    "info": "Success => channels: Array <string>"
-                }
-            ]
-        },
-        {
-            "name":"followArtist",
-            "args":[
-                {
+                }, {
+                    "name": "success",
+                    "info": "Success"
+                }]
+        }, {
+            "name": "followArtist",
+            "args": [{
                     "name": "access_token",
                     "type": "String",
-                    "info": "A valid access token from the getAccessToken method"
-                },
-                {
+                    "info": "A valid access token from the getAccessToken method",
+                    "required": true
+                }, {
                     "name": "id",
                     "type": "String",
-                    "info": "Artist Spotify ID."
-                }
-            ],
-            "callbacks":[
-                {
-                    "name":"error",
+                    "info": "Artist Spotify ID.",
+                    "required": true
+                }],
+            "callbacks": [{
+                    "name": "error",
                     "info": "Error"
-                },
-                {
-                    "name":"success",
-                    "info": "Success => channels: Array <string>"
-                }
-            ]
-        },
-        {
-            "name":"unfollowUser",
-            "args":[
-                {
+                }, {
+                    "name": "success",
+                    "info": "Success"
+                }]
+        }, {
+            "name": "unfollowUser",
+            "args": [{
                     "name": "access_token",
                     "type": "String",
-                    "info": "A valid access token from the getAccessToken method"
-                },
-                {
+                    "info": "A valid access token from the getAccessToken method",
+                    "required": true
+                }, {
                     "name": "id",
                     "type": "String",
-                    "info": "User Spotify ID."
-                }
-            ],
-            "callbacks":[
-                {
-                    "name":"error",
+                    "info": "User Spotify ID.",
+                    "required": true
+                }],
+            "callbacks": [{
+                    "name": "error",
                     "info": "Error"
-                },
-                {
-                    "name":"success",
-                    "info": "Success => channels: Array <string>"
-                }
-            ]
-        },
-        {
-            "name":"unfollowArtist",
-            "args":[
-                {
+                }, {
+                    "name": "success",
+                    "info": "Success"
+                }]
+        }, {
+            "name": "unfollowArtist",
+            "args": [{
                     "name": "access_token",
                     "type": "String",
-                    "info": "A valid access token from the getAccessToken method"
-                },
-                {
+                    "info": "A valid access token from the getAccessToken method",
+                    "required": true
+                }, {
                     "name": "id",
                     "type": "String",
-                    "info": "Artist Spotify ID."
-                }
-            ],
-            "callbacks":[
-                {
-                    "name":"error",
+                    "info": "Artist Spotify ID.",
+                    "required": true
+                }],
+            "callbacks": [{
+                    "name": "error",
                     "info": "Error"
-                },
-                {
-                    "name":"success",
-                    "info": "Success => channels: Array <string>"
-                }
-            ]
-        },
-        {
-            "name":"checkFollowUser",
-            "args":[
-                {
+                }, {
+                    "name": "success",
+                    "info": "Success"
+                }]
+        }, {
+            "name": "checkFollowUser",
+            "args": [{
                     "name": "access_token",
                     "type": "String",
-                    "info": "A valid access token from the getAccessToken method"
-                },
-                {
+                    "info": "A valid access token from the getAccessToken method",
+                    "required": true
+                }, {
                     "name": "id",
                     "type": "String",
-                    "info": "User Spotify ID."
-                }
-            ],
-            "callbacks":[
-                {
-                    "name":"error",
+                    "info": "User Spotify ID.",
+                    "required": true
+                }],
+            "callbacks": [{
+                    "name": "error",
                     "info": "Error"
-                },
-                {
-                    "name":"success",
-                    "info": "Success => channels: Array <string>"
-                }
-            ]
-        },
-        {
-            "name":"checkFollowArtist",
-            "args":[
-                {
+                }, {
+                    "name": "success",
+                    "info": "Success"
+                }]
+        }, {
+            "name": "checkFollowArtist",
+            "args": [{
                     "name": "access_token",
                     "type": "String",
-                    "info": "A valid access token from the getAccessToken method"
-                },
-                {
+                    "info": "A valid access token from the getAccessToken method",
+                    "required": true
+                }, {
                     "name": "id",
                     "type": "String",
-                    "info": "Artist Spotify ID."
-                }
-            ],
-            "callbacks":[
-                {
-                    "name":"error",
+                    "info": "Artist Spotify ID.",
+                    "required": true
+                }],
+            "callbacks": [{
+                    "name": "error",
                     "info": "Error"
-                },
-                {
-                    "name":"success",
-                    "info": "Success => channels: Array <string>"
-                }
-            ]
-        },
-        {
-            "name":"followPlaylist",
-            "args":[
-                {
+                }, {
+                    "name": "success",
+                    "info": "Success"
+                }]
+        }, {
+            "name": "followPlaylist",
+            "args": [{
                     "name": "access_token",
                     "type": "String",
-                    "info": "A valid access token from the getAccessToken method"
-                },
-                {
+                    "info": "A valid access token from the getAccessToken method",
+                    "required": true
+                }, {
                     "name": "owner_id",
                     "type": "String",
-                    "info": "The Spotify user ID of the person who owns the playlist."
-                },
-                {
+                    "info": "The Spotify user ID of the person who owns the playlist.",
+                    "required": true
+                }, {
                     "name": "playlist_id",
                     "type": "String",
-                    "info": "The Spotify ID of the playlist."
-                },
-                {
+                    "info": "The Spotify ID of the playlist.",
+                    "required": true
+                }, {
                     "name": "public",
                     "type": "String",
-                    "info": "Optional: If true the playlist will be included in user's public playlists, if false it will remain private."
-                }
-            ],
-            "callbacks":[
-                {
-                    "name":"error",
+                    "info": "If true the playlist will be included in user's public playlists, if false it will remain private.",
+                    "required": false
+                }],
+            "callbacks": [{
+                    "name": "error",
                     "info": "Error"
-                },
-                {
-                    "name":"success",
-                    "info": "Success => channels: Array <string>"
-                }
-            ]
-        },
-        {
-            "name":"unfollowPlaylist",
-            "args":[
-                {
+                }, {
+                    "name": "success",
+                    "info": "Success"
+                }]
+        }, {
+            "name": "unfollowPlaylist",
+            "args": [{
                     "name": "access_token",
                     "type": "String",
-                    "info": "A valid access token from the getAccessToken method"
-                },
-                {
+                    "info": "A valid access token from the getAccessToken method",
+                    "required": true
+                }, {
                     "name": "owner_id",
                     "type": "String",
-                    "info": "The Spotify user ID of the person who owns the playlist."
-                },
-                {
+                    "info": "The Spotify user ID of the person who owns the playlist.",
+                    "required": true
+                }, {
                     "name": "playlist_id",
                     "type": "String",
-                    "info": "The Spotify ID of the playlist."
-                }
-            ],
-            "callbacks":[
-                {
-                    "name":"error",
+                    "info": "The Spotify ID of the playlist.",
+                    "required": true
+                }],
+            "callbacks": [{
+                    "name": "error",
                     "info": "Error"
-                },
-                {
-                    "name":"success",
-                    "info": "Success => channels: Array <string>"
-                }
-            ]
-        },
-        {
-            "name":"saveTrack",
-            "args":[
-                {
+                }, {
+                    "name": "success",
+                    "info": "Success"
+                }]
+        }, {
+            "name": "saveTrack",
+            "args": [{
                     "name": "access_token",
                     "type": "String",
-                    "info": "A valid access token from the getAccessToken method"
-                },
-                {
+                    "info": "A valid access token from the getAccessToken method",
+                    "required": true
+                }, {
                     "name": "id",
                     "type": "String",
-                    "info": "A comma-separated list of the Spotify IDs."
-                }
-            ],
-            "callbacks":[
-                {
-                    "name":"error",
+                    "info": "A comma-separated list of the Spotify IDs.",
+                    "required": true
+                }],
+            "callbacks": [{
+                    "name": "error",
                     "info": "Error"
-                },
-                {
-                    "name":"success",
-                    "info": "Success => channels: Array <string>"
-                }
-            ]
-        },
-        {
-            "name":"getUserSavedTracks",
-            "args":[
-                {
+                }, {
+                    "name": "success",
+                    "info": "Success"
+                }]
+        }, {
+            "name": "getUserSavedTracks",
+            "args": [{
                     "name": "access_token",
                     "type": "String",
-                    "info": "A valid access token from the getAccessToken method"
-                },
-                {
+                    "info": "A valid access token from the getAccessToken method",
+                    "required": true
+                }, {
                     "name": "market",
                     "type": "String",
-                    "info": "Optional: An ISO 3166-1 alpha-2 country code. Provide this parameter if you want to apply Track Relinking."
-                }
-            ],
-            "callbacks":[
-                {
-                    "name":"error",
+                    "info": "An ISO 3166-1 alpha-2 country code. Provide this parameter if you want to apply Track Relinking.",
+                    "required": false
+                }],
+            "callbacks": [{
+                    "name": "error",
                     "info": "Error"
-                },
-                {
-                    "name":"success",
-                    "info": "Success => channels: Array <string>"
-                }
-            ]
-        },
-        {
-            "name":"removeSavedTracks",
-            "args":[
-                {
+                }, {
+                    "name": "success",
+                    "info": "Success"
+                }]
+        }, {
+            "name": "removeSavedTracks",
+            "args": [{
                     "name": "access_token",
                     "type": "String",
-                    "info": "A valid access token from the getAccessToken method"
-                },
-                {
+                    "info": "A valid access token from the getAccessToken method",
+                    "required": true
+                }, {
                     "name": "id",
                     "type": "String",
-                    "info": "A comma-separated list of the Spotify IDs."
-                }
-            ],
-            "callbacks":[
-                {
-                    "name":"error",
+                    "info": "A comma-separated list of the Spotify IDs.",
+                    "required": true
+                }],
+            "callbacks": [{
+                    "name": "error",
                     "info": "Error"
-                },
-                {
-                    "name":"success",
-                    "info": "Success => channels: Array <string>"
-                }
-            ]
-        },
-        {
-            "name":"checkSavedTrack",
-            "args":[
-                {
+                }, {
+                    "name": "success",
+                    "info": "Success"
+                }]
+        }, {
+            "name": "checkSavedTrack",
+            "args": [{
                     "name": "access_token",
                     "type": "String",
-                    "info": "A valid access token from the getAccessToken method"
-                },
-                {
+                    "info": "A valid access token from the getAccessToken method",
+                    "required": true
+                }, {
                     "name": "id",
                     "type": "String",
-                    "info": "A comma-separated list of the Spotify IDs."
-                }
-            ],
-            "callbacks":[
-                {
-                    "name":"error",
+                    "info": "A comma-separated list of the Spotify IDs.",
+                    "required": true
+                }],
+            "callbacks": [{
+                    "name": "error",
                     "info": "Error"
-                },
-                {
-                    "name":"success",
-                    "info": "Success => channels: Array <string>"
-                }
-            ]
-        },
-        {
-            "name":"saveAlbumForUser",
-            "args":[
-                {
+                }, {
+                    "name": "success",
+                    "info": "Success"
+                }]
+        }, {
+            "name": "saveAlbumForUser",
+            "args": [{
                     "name": "access_token",
                     "type": "String",
-                    "info": "A valid access token from the getAccessToken method"
-                },
-                {
+                    "info": "A valid access token from the getAccessToken method",
+                    "required": true
+                }, {
                     "name": "id",
                     "type": "String",
-                    "info": "A comma-separated list of the Spotify IDs."
-                }
-            ],
-            "callbacks":[
-                {
-                    "name":"error",
+                    "info": "A comma-separated list of the Spotify IDs.",
+                    "required": true
+                }],
+            "callbacks": [{
+                    "name": "error",
                     "info": "Error"
-                },
-                {
-                    "name":"success",
-                    "info": "Success => channels: Array <string>"
-                }
-            ]
-        },
-        {
-            "name":"getUserSavedAlbums",
-            "args":[
-                {
+                }, {
+                    "name": "success",
+                    "info": "Success"
+                }]
+        }, {
+            "name": "getUserSavedAlbums",
+            "args": [{
                     "name": "access_token",
                     "type": "String",
-                    "info": "A valid access token from the getAccessToken method"
-                },
-                {
+                    "info": "A valid access token from the getAccessToken method",
+                    "required": true
+                }, {
                     "name": "market",
                     "type": "String",
-                    "info": "Optional: An ISO 3166-1 alpha-2 country code. Provide this parameter if you want to apply Track Relinking."
-                }
-            ],
-            "callbacks":[
-                {
-                    "name":"error",
+                    "info": "An ISO 3166-1 alpha-2 country code. Provide this parameter if you want to apply Track Relinking.",
+                    "required": false
+                }],
+            "callbacks": [{
+                    "name": "error",
                     "info": "Error"
-                },
-                {
-                    "name":"success",
-                    "info": "Success => channels: Array <string>"
-                }
-            ]
-        },
-        {
-            "name":"removeSavedAlbum",
-            "args":[
-                {
+                }, {
+                    "name": "success",
+                    "info": "Success"
+                }]
+        }, {
+            "name": "removeSavedAlbum",
+            "args": [{
                     "name": "access_token",
                     "type": "String",
-                    "info": "A valid access token from the getAccessToken method"
-                },
-                {
+                    "info": "A valid access token from the getAccessToken method",
+                    "required": true
+                }, {
                     "name": "id",
                     "type": "String",
-                    "info": "A comma-separated list of the Spotify IDs."
-                }
-            ],
-            "callbacks":[
-                {
-                    "name":"error",
+                    "info": "A comma-separated list of the Spotify IDs.",
+                    "required": true
+                }],
+            "callbacks": [{
+                    "name": "error",
                     "info": "Error"
-                },
-                {
-                    "name":"success",
-                    "info": "Success => channels: Array <string>"
-                }
-            ]
-        },
-        {
-            "name":"checkSavedAlbum",
-            "args":[
-                {
+                }, {
+                    "name": "success",
+                    "info": "Success"
+                }]
+        }, {
+            "name": "checkSavedAlbum",
+            "args": [{
                     "name": "access_token",
                     "type": "String",
-                    "info": "A valid access token from the getAccessToken method"
-                },
-                {
+                    "info": "A valid access token from the getAccessToken method",
+                    "required": true
+                }, {
                     "name": "id",
                     "type": "String",
-                    "info": "A comma-separated list of the Spotify IDs."
-                }
-            ],
-            "callbacks":[
-                {
-                    "name":"error",
+                    "info": "A comma-separated list of the Spotify IDs.",
+                    "required": true
+                }],
+            "callbacks": [{
+                    "name": "error",
                     "info": "Error"
-                },
-                {
-                    "name":"success",
-                    "info": "Success => channels: Array <string>"
-                }
-            ]
-        },
-        {
-            "name":"getUserTopArtists",
-            "args":[
-                {
+                }, {
+                    "name": "success",
+                    "info": "Success"
+                }]
+        }, {
+            "name": "getUserTopArtists",
+            "args": [{
                     "name": "access_token",
                     "type": "String",
-                    "info": "A valid access token from the getAccessToken method"
-                },
-                {
+                    "info": "A valid access token from the getAccessToken method",
+                    "required": true
+                }, {
                     "name": "time_range",
                     "type": "String",
-                    "info": "Optional: Over what time frame the affinities are computed. Valid values: long_term (calculated from several years of data and including all new data as it becomes available), medium_term (approximately last 6 months), short_term (approximately last 4 weeks). Default: medium_term."
-                }
-            ],
-            "callbacks":[
-                {
-                    "name":"error",
+                    "info": "Over what time frame the affinities are computed. Valid values: long_term (calculated from several years of data and including all new data as it becomes available), medium_term (approximately last 6 months), short_term (approximately last 4 weeks). Default: medium_term.",
+                    "required": false
+                }],
+            "callbacks": [{
+                    "name": "error",
                     "info": "Error"
-                },
-                {
-                    "name":"success",
-                    "info": "Success => channels: Array <string>"
-                }
-            ]
-        },
-        {
-            "name":"getUserTopTracks",
-            "args":[
-                {
+                }, {
+                    "name": "success",
+                    "info": "Success"
+                }]
+        }, {
+            "name": "getUserTopTracks",
+            "args": [{
                     "name": "access_token",
                     "type": "String",
-                    "info": "A valid access token from the getAccessToken method"
-                },
-                {
+                    "info": "A valid access token from the getAccessToken method",
+                    "required": true
+                }, {
                     "name": "time_range",
                     "type": "String",
-                    "info": "Optional: Over what time frame the affinities are computed. Valid values: long_term (calculated from several years of data and including all new data as it becomes available), medium_term (approximately last 6 months), short_term (approximately last 4 weeks). Default: medium_term."
-                }
-            ],
-            "callbacks":[
-                {
-                    "name":"error",
+                    "info": "Over what time frame the affinities are computed. Valid values: long_term (calculated from several years of data and including all new data as it becomes available), medium_term (approximately last 6 months), short_term (approximately last 4 weeks). Default: medium_term.",
+                    "required": false
+                }],
+            "callbacks": [{
+                    "name": "error",
                     "info": "Error"
-                },
-                {
-                    "name":"success",
-                    "info": "Success => channels: Array <string>"
-                }
-            ]
-        },
-        {
-            "name":"getRecommendations",
-            "args":[
-                {
+                }, {
+                    "name": "success",
+                    "info": "Success"
+                }]
+        }, {
+            "name": "getRecommendations",
+            "args": [{
                     "name": "access_token",
                     "type": "String",
-                    "info": "A valid access token from the getAccessToken method"
-                },
-                {
+                    "info": "A valid access token from the getAccessToken method",
+                    "required": true
+                }, {
                     "name": "seed_artists",
                     "type": "String",
-                    "info": "A comma separated list of Spotify IDs for seed artists."
-                },
-                {
+                    "info": "A comma separated list of Spotify IDs for seed artists.",
+                    "required": true
+                }, {
                     "name": "seed_genres",
                     "type": "String",
-                    "info": "A comma separated list of any genres in the set of available genre seeds."
-                },
-                {
+                    "info": "A comma separated list of any genres in the set of available genre seeds.",
+                    "required": true
+                }, {
                     "name": "seed_tracks",
                     "type": "String",
-                    "info": "A comma separated list of Spotify IDs for a seed track."
-                },
-                {
+                    "info": "A comma separated list of Spotify IDs for a seed track.",
+                    "required": true
+                }, {
                     "name": "market",
                     "type": "String",
-                    "info": "Optional: An ISO 3166-1 alpha-2 country code. Provide this parameter if you want to apply Track Relinking."
-                },
-                {
+                    "info": "An ISO 3166-1 alpha-2 country code. Provide this parameter if you want to apply Track Relinking.",
+                    "required": false
+                }, {
                     "name": "limit",
                     "type": "String",
-                    "info": "Optional: The target size of the list of recommended tracks. For seeds with unusually small pools or when highly restrictive filtering is applied, it may be impossible to generate the requested number of recommended tracks. Debugging information for such cases is available in the response. Default: 20. Minimum: 1. Maximum: 100."
-                },
-                {
+                    "info": "The target size of the list of recommended tracks. For seeds with unusually small pools or when highly restrictive filtering is applied, it may be impossible to generate the requested number of recommended tracks. Debugging information for such cases is available in the response. Default: 20. Minimum: 1. Maximum: 100.",
+                    "required": false
+                }, {
                     "name": "acousticness_min",
                     "type": "String",
-                    "info": "Optional: A confidence measure from 0.0 to 1.0 of whether the track is acoustic. 1.0 represents high confidence the track is acoustic."
-                },
-                {
+                    "info": "A confidence measure from 0.0 to 1.0 of whether the track is acoustic. 1.0 represents high confidence the track is acoustic.",
+                    "required": false
+                }, {
                     "name": "acousticness_max",
                     "type": "String",
-                    "info": "Optional: A confidence measure from 0.0 to 1.0 of whether the track is acoustic. 1.0 represents high confidence the track is acoustic."
-                },
-                {
+                    "info": "A confidence measure from 0.0 to 1.0 of whether the track is acoustic. 1.0 represents high confidence the track is acoustic.",
+                    "required": false
+                }, {
                     "name": "acousticness_target",
                     "type": "String",
-                    "info": "Optional: A confidence measure from 0.0 to 1.0 of whether the track is acoustic. 1.0 represents high confidence the track is acoustic."
-                },
-                {
+                    "info": "A confidence measure from 0.0 to 1.0 of whether the track is acoustic. 1.0 represents high confidence the track is acoustic.",
+                    "required": false
+                }, {
                     "name": "danceability_min",
                     "type": "String",
-                    "info": "Optional: Danceability describes how suitable a track is for dancing based on a combination of musical elements including tempo, rhythm stability, beat strength, and overall regularity. A value of 0.0 is least danceable and 1.0 is most danceable."
-                },
-                {
+                    "info": "Danceability describes how suitable a track is for dancing based on a combination of musical elements including tempo, rhythm stability, beat strength, and overall regularity. A value of 0.0 is least danceable and 1.0 is most danceable.",
+                    "required": false
+                }, {
                     "name": "danceability_max",
                     "type": "String",
-                    "info": "Optional: Danceability describes how suitable a track is for dancing based on a combination of musical elements including tempo, rhythm stability, beat strength, and overall regularity. A value of 0.0 is least danceable and 1.0 is most danceable."
-                },
-                {
+                    "info": "Danceability describes how suitable a track is for dancing based on a combination of musical elements including tempo, rhythm stability, beat strength, and overall regularity. A value of 0.0 is least danceable and 1.0 is most danceable.",
+                    "required": false
+                }, {
                     "name": "danceability_target",
                     "type": "String",
-                    "info": "Optional: Danceability describes how suitable a track is for dancing based on a combination of musical elements including tempo, rhythm stability, beat strength, and overall regularity. A value of 0.0 is least danceable and 1.0 is most danceable."
-                },
-                {
+                    "info": "Danceability describes how suitable a track is for dancing based on a combination of musical elements including tempo, rhythm stability, beat strength, and overall regularity. A value of 0.0 is least danceable and 1.0 is most danceable.",
+                    "required": false
+                }, {
                     "name": "duration_ms_min",
                     "type": "String",
-                    "info": "Optional: The duration of the track in milliseconds."
-                },
-                {
+                    "info": "The duration of the track in milliseconds.",
+                    "required": false
+                }, {
                     "name": "duration_ms_max",
                     "type": "String",
-                    "info": "Optional: The duration of the track in milliseconds."
-                },
-                {
+                    "info": "The duration of the track in milliseconds.",
+                    "required": false
+                }, {
                     "name": "duration_ms_target",
                     "type": "String",
-                    "info": "Optional: The duration of the track in milliseconds."
-                },
-                {
+                    "info": "The duration of the track in milliseconds.",
+                    "required": false
+                }, {
                     "name": "energy_min",
                     "type": "String",
-                    "info": "Optional: Energy is a measure from 0.0 to 1.0 and represents a perceptual measure of intensity and activity. Typically, energetic tracks feel fast, loud, and noisy."
-                },
-                {
+                    "info": "Energy is a measure from 0.0 to 1.0 and represents a perceptual measure of intensity and activity. Typically, energetic tracks feel fast, loud, and noisy.",
+                    "required": false
+                }, {
                     "name": "energy_max",
                     "type": "String",
-                    "info": "Optional: Energy is a measure from 0.0 to 1.0 and represents a perceptual measure of intensity and activity. Typically, energetic tracks feel fast, loud, and noisy."
-                }
-                ,
-                {
+                    "info": "Energy is a measure from 0.0 to 1.0 and represents a perceptual measure of intensity and activity. Typically, energetic tracks feel fast, loud, and noisy.",
+                    "required": false
+                }, {
                     "name": "energy_target",
                     "type": "String",
-                    "info": "Optional: Energy is a measure from 0.0 to 1.0 and represents a perceptual measure of intensity and activity. Typically, energetic tracks feel fast, loud, and noisy."
-                },
-                {
+                    "info": "Energy is a measure from 0.0 to 1.0 and represents a perceptual measure of intensity and activity. Typically, energetic tracks feel fast, loud, and noisy.",
+                    "required": false
+                }, {
                     "name": "instrumentalness_min",
                     "type": "String",
-                    "info": "Optional: Predicts whether a track contains no vocals. 'Ooh' and 'aah' sounds are treated as instrumental in this context. Rap or spoken word tracks are clearly 'vocal'. The closer the instrumentalness value is to 1.0, the greater likelihood the track contains no vocal content. Values above 0.5 are intended to represent instrumental tracks, but confidence is higher as the value approaches 1.0."
-                },
-                {
+                    "info": "Predicts whether a track contains no vocals. 'Ooh' and 'aah' sounds are treated as instrumental in this context. Rap or spoken word tracks are clearly 'vocal'. The closer the instrumentalness value is to 1.0, the greater likelihood the track contains no vocal content. Values above 0.5 are intended to represent instrumental tracks, but confidence is higher as the value approaches 1.0.",
+                    "required": false
+                }, {
                     "name": "instrumentalness_max",
                     "type": "String",
-                    "info": "Optional: Predicts whether a track contains no vocals. 'Ooh' and 'aah' sounds are treated as instrumental in this context. Rap or spoken word tracks are clearly 'vocal'. The closer the instrumentalness value is to 1.0, the greater likelihood the track contains no vocal content. Values above 0.5 are intended to represent instrumental tracks, but confidence is higher as the value approaches 1.0."
-                },
-                {
+                    "info": "Predicts whether a track contains no vocals. 'Ooh' and 'aah' sounds are treated as instrumental in this context. Rap or spoken word tracks are clearly 'vocal'. The closer the instrumentalness value is to 1.0, the greater likelihood the track contains no vocal content. Values above 0.5 are intended to represent instrumental tracks, but confidence is higher as the value approaches 1.0.",
+                    "required": false
+                }, {
                     "name": "instrumentalness_target",
                     "type": "String",
-                    "info": "Optional: Predicts whether a track contains no vocals. 'Ooh' and 'aah' sounds are treated as instrumental in this context. Rap or spoken word tracks are clearly 'vocal'. The closer the instrumentalness value is to 1.0, the greater likelihood the track contains no vocal content. Values above 0.5 are intended to represent instrumental tracks, but confidence is higher as the value approaches 1.0."
-                },
-                {
+                    "info": "Predicts whether a track contains no vocals. 'Ooh' and 'aah' sounds are treated as instrumental in this context. Rap or spoken word tracks are clearly 'vocal'. The closer the instrumentalness value is to 1.0, the greater likelihood the track contains no vocal content. Values above 0.5 are intended to represent instrumental tracks, but confidence is higher as the value approaches 1.0.",
+                    "required": false
+                }, {
                     "name": "key_min",
                     "type": "String",
-                    "info": "Optional: The key the track is in. Integers map to pitches using standard Pitch Class notation."
-                },
-                {
+                    "info": "The key the track is in. Integers map to pitches using standard Pitch Class notation.",
+                    "required": false
+                }, {
                     "name": "key_max",
                     "type": "String",
-                    "info": "Optional: The key the track is in. Integers map to pitches using standard Pitch Class notation."
-                },
-                {
+                    "info": "The key the track is in. Integers map to pitches using standard Pitch Class notation.",
+                    "required": false
+                }, {
                     "name": "key_target",
                     "type": "String",
-                    "info": "Optional: The key the track is in. Integers map to pitches using standard Pitch Class notation."
-                },
-                {
+                    "info": "The key the track is in. Integers map to pitches using standard Pitch Class notation.",
+                    "required": false
+                }, {
                     "name": "liveness_min",
                     "type": "String",
-                    "info": "Optional: Detects the presence of an audience in the recording. Higher liveness values represent an increased probability that the track was performed live. A value above 0.8 provides strong likelihood that the track is live."
-                },
-                {
+                    "info": "Detects the presence of an audience in the recording. Higher liveness values represent an increased probability that the track was performed live. A value above 0.8 provides strong likelihood that the track is live.",
+                    "required": false
+                }, {
                     "name": "liveness_max",
                     "type": "String",
-                    "info": "Optional: Detects the presence of an audience in the recording. Higher liveness values represent an increased probability that the track was performed live. A value above 0.8 provides strong likelihood that the track is live."
-                },
-                {
+                    "info": "Detects the presence of an audience in the recording. Higher liveness values represent an increased probability that the track was performed live. A value above 0.8 provides strong likelihood that the track is live.",
+                    "required": false
+                }, {
                     "name": "liveness_target",
                     "type": "String",
-                    "info": "Optional: Detects the presence of an audience in the recording. Higher liveness values represent an increased probability that the track was performed live. A value above 0.8 provides strong likelihood that the track is live."
-                },
-                {
+                    "info": "Detects the presence of an audience in the recording. Higher liveness values represent an increased probability that the track was performed live. A value above 0.8 provides strong likelihood that the track is live.",
+                    "required": false
+                }, {
                     "name": "loudness_min",
                     "type": "String",
-                    "info": "Optional: The overall loudness of a track in decibels (dB). Loudness values are averaged across the entire track and are useful for comparing relative loudness of tracks. Loudness is the quality of a sound that is the primary psychological correlate of physical strength (amplitude). Values typical range between -60 and 0 db."
-                },
-                {
+                    "info": "The overall loudness of a track in decibels (dB). Loudness values are averaged across the entire track and are useful for comparing relative loudness of tracks. Loudness is the quality of a sound that is the primary psychological correlate of physical strength (amplitude). Values typical range between -60 and 0 db.",
+                    "required": false
+                }, {
                     "name": "loudness_max",
                     "type": "String",
-                    "info": "Optional: The overall loudness of a track in decibels (dB). Loudness values are averaged across the entire track and are useful for comparing relative loudness of tracks. Loudness is the quality of a sound that is the primary psychological correlate of physical strength (amplitude). Values typical range between -60 and 0 db."
-                },
-                {
+                    "info": "The overall loudness of a track in decibels (dB). Loudness values are averaged across the entire track and are useful for comparing relative loudness of tracks. Loudness is the quality of a sound that is the primary psychological correlate of physical strength (amplitude). Values typical range between -60 and 0 db.",
+                    "required": false
+                }, {
                     "name": "loudness_target",
                     "type": "String",
-                    "info": "Optional: The overall loudness of a track in decibels (dB). Loudness values are averaged across the entire track and are useful for comparing relative loudness of tracks. Loudness is the quality of a sound that is the primary psychological correlate of physical strength (amplitude). Values typical range between -60 and 0 db."
-                },
-                {
+                    "info": "The overall loudness of a track in decibels (dB). Loudness values are averaged across the entire track and are useful for comparing relative loudness of tracks. Loudness is the quality of a sound that is the primary psychological correlate of physical strength (amplitude). Values typical range between -60 and 0 db.",
+                    "required": false
+                }, {
                     "name": "mode_min",
                     "type": "String",
-                    "info": "Optional: Mode indicates the modality (major or minor) of a track, the type of scale from which its melodic content is derived. Major is represented by 1 and minor is 0."
-                },
-                {
+                    "info": "Mode indicates the modality (major or minor) of a track, the type of scale from which its melodic content is derived. Major is represented by 1 and minor is 0.",
+                    "required": false
+                }, {
                     "name": "mode_max",
                     "type": "String",
-                    "info": "Optional: Mode indicates the modality (major or minor) of a track, the type of scale from which its melodic content is derived. Major is represented by 1 and minor is 0."
-                },
-                {
+                    "info": "Mode indicates the modality (major or minor) of a track, the type of scale from which its melodic content is derived. Major is represented by 1 and minor is 0.",
+                    "required": false
+                }, {
                     "name": "mode_target",
                     "type": "String",
-                    "info": "Optional: Mode indicates the modality (major or minor) of a track, the type of scale from which its melodic content is derived. Major is represented by 1 and minor is 0."
-                },
-                {
+                    "info": "Mode indicates the modality (major or minor) of a track, the type of scale from which its melodic content is derived. Major is represented by 1 and minor is 0.",
+                    "required": false
+                }, {
                     "name": "popularity_min",
                     "type": "String",
-                    "info": "Optional: The popularity of the track. The value will be between 0 and 100, with 100 being the most popular."
-                },
-                {
+                    "info": "The popularity of the track. The value will be between 0 and 100, with 100 being the most popular.",
+                    "required": false
+                }, {
                     "name": "popularity_max",
                     "type": "String",
-                    "info": "Optional: The popularity of the track. The value will be between 0 and 100, with 100 being the most popular."
-                },
-                {
+                    "info": "The popularity of the track. The value will be between 0 and 100, with 100 being the most popular.",
+                    "required": false
+                }, {
                     "name": "popularity_target",
                     "type": "String",
-                    "info": "Optional: The popularity of the track. The value will be between 0 and 100, with 100 being the most popular."
-                },
-                {
+                    "info": "The popularity of the track. The value will be between 0 and 100, with 100 being the most popular.",
+                    "required": false
+                }, {
                     "name": "speechiness_min",
                     "type": "String",
-                    "info": "Optional: Speechiness detects the presence of spoken words in a track. The more exclusively speech-like the recording (e.g. talk show, audio book, poetry), the closer to 1.0 the attribute value."
-                },
-                {
+                    "info": "Speechiness detects the presence of spoken words in a track. The more exclusively speech-like the recording (e.g. talk show, audio book, poetry), the closer to 1.0 the attribute value.",
+                    "required": false
+                }, {
                     "name": "speechiness_max",
                     "type": "String",
-                    "info": "Optional: Speechiness detects the presence of spoken words in a track. The more exclusively speech-like the recording (e.g. talk show, audio book, poetry), the closer to 1.0 the attribute value."
-                },
-                {
+                    "info": "Speechiness detects the presence of spoken words in a track. The more exclusively speech-like the recording (e.g. talk show, audio book, poetry), the closer to 1.0 the attribute value.",
+                    "required": false
+                }, {
                     "name": "speechiness_target",
                     "type": "String",
-                    "info": "Optional: Speechiness detects the presence of spoken words in a track. The more exclusively speech-like the recording (e.g. talk show, audio book, poetry), the closer to 1.0 the attribute value."
-                },
-                {
+                    "info": "Speechiness detects the presence of spoken words in a track. The more exclusively speech-like the recording (e.g. talk show, audio book, poetry), the closer to 1.0 the attribute value.",
+                    "required": false
+                }, {
                     "name": "tempo_min",
                     "type": "String",
-                    "info": "Optional: The overall estimated tempo of a track in beats per minute (BPM)."
-                },
-                {
+                    "info": "The overall estimated tempo of a track in beats per minute (BPM).",
+                    "required": false
+                }, {
                     "name": "tempo_max",
                     "type": "String",
-                    "info": "Optional: The overall estimated tempo of a track in beats per minute (BPM)."
-                },
-                {
+                    "info": "The overall estimated tempo of a track in beats per minute (BPM).",
+                    "required": false
+                }, {
                     "name": "tempo_target",
                     "type": "String",
-                    "info": "Optional: The overall estimated tempo of a track in beats per minute (BPM)."
-                },
-                {
+                    "info": "The overall estimated tempo of a track in beats per minute (BPM).",
+                    "required": false
+                }, {
                     "name": "time_signature_min",
                     "type": "String",
-                    "info": "Optional: An estimated overall time signature of a track. The time signature (meter) is a notational convention to specify how many beats are in each bar (or measure)."
-                },
-                {
+                    "info": "An estimated overall time signature of a track. The time signature (meter) is a notational convention to specify how many beats are in each bar (or measure).",
+                    "required": false
+                }, {
                     "name": "time_signature_max",
                     "type": "String",
-                    "info": "Optional: An estimated overall time signature of a track. The time signature (meter) is a notational convention to specify how many beats are in each bar (or measure)."
-                },
-                {
+                    "info": "An estimated overall time signature of a track. The time signature (meter) is a notational convention to specify how many beats are in each bar (or measure).",
+                    "required": false
+                }, {
                     "name": "time_signature_target",
                     "type": "String",
-                    "info": "Optional: An estimated overall time signature of a track. The time signature (meter) is a notational convention to specify how many beats are in each bar (or measure)."
-                },
-                {
+                    "info": "An estimated overall time signature of a track. The time signature (meter) is a notational convention to specify how many beats are in each bar (or measure).",
+                    "required": false
+                }, {
                     "name": "valence_min",
                     "type": "String",
-                    "info": "Optional: A measure from 0.0 to 1.0 describing the musical positiveness conveyed by a track."
-                },
-                {
+                    "info": "A measure from 0.0 to 1.0 describing the musical positiveness conveyed by a track.",
+                    "required": false
+                }, {
                     "name": "valence_max",
                     "type": "String",
-                    "info": "Optional: A measure from 0.0 to 1.0 describing the musical positiveness conveyed by a track."
-                },
-                {
+                    "info": "A measure from 0.0 to 1.0 describing the musical positiveness conveyed by a track.",
+                    "required": false
+                }, {
                     "name": "valence_target",
                     "type": "String",
-                    "info": "Optional: A measure from 0.0 to 1.0 describing the musical positiveness conveyed by a track."
-                }
-            ],
-            "callbacks":[
-                {
-                    "name":"error",
+                    "info": "A measure from 0.0 to 1.0 describing the musical positiveness conveyed by a track.",
+                    "required": false
+                }],
+            "callbacks": [{
+                    "name": "error",
                     "info": "Error"
-                },
-                {
-                    "name":"success",
-                    "info": "Success => channels: Array <string>"
-                }
-            ]
-        }
-    ]
+                }, {
+                    "name": "success",
+                    "info": "Success"
+                }]
+        }]
 }
