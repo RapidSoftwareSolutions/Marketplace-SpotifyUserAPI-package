@@ -11,6 +11,7 @@
     },
     "blocks": [{
             "name": "getAccessToken",
+            "description": "Allows to get an access token.",
             "args": [{
                     "name": "client_id",
                     "type": "credentials",
@@ -41,6 +42,7 @@
                 }]
         }, {
             "name": "refreshAccessToken",
+            "description": "Allows to refresh access token.",
             "args": [{
                     "name": "client_id",
                     "type": "credentials",
@@ -66,6 +68,7 @@
                 }]
         }, {
             "name": "getTrackAudioFeatures",
+            "description": "Get audio feature information for a single track identified by its unique Spotify ID.",
             "args": [{
                     "name": "access_token",
                     "type": "String",
@@ -86,6 +89,7 @@
                 }]
         }, {
             "name": "getFeaturedPlaylists",
+            "description": "Get a list of Spotify featured playlists.",
             "args": [{
                     "name": "access_token",
                     "type": "String",
@@ -116,6 +120,7 @@
                 }]
         }, {
             "name": "getNewReleases",
+            "description": "Get a list of new album releases featured in Spotify.",
             "args": [{
                     "name": "access_token",
                     "type": "String",
@@ -136,6 +141,7 @@
                 }]
         }, {
             "name": "getCategories",
+            "description": "Get a list of categories used to tag items in Spotify.",
             "args": [{
                     "name": "access_token",
                     "type": "String",
@@ -161,6 +167,7 @@
                 }]
         }, {
             "name": "getCategory",
+            "description": "Get a single category used to tag items in Spotify.",
             "args": [{
                     "name": "access_token",
                     "type": "String",
@@ -191,6 +198,7 @@
                 }]
         }, {
             "name": "getCategoryPlaylists",
+            "description": "Get a list of Spotify playlists tagged with a particular category.",
             "args": [{
                     "name": "access_token",
                     "type": "String",
@@ -216,6 +224,7 @@
                 }]
         }, {
             "name": "getCurrentUserProfile",
+            "description": "Get detailed profile information about the current user (including the current user’s username).",
             "args": [{
                     "name": "access_token",
                     "type": "String",
@@ -231,6 +240,7 @@
                 }]
         }, {
             "name": "getFollowedArtists",
+            "description": "Get the current user’s followed artists.",
             "args": [{
                     "name": "access_token",
                     "type": "String",
@@ -246,6 +256,7 @@
                 }]
         }, {
             "name": "followUser",
+            "description": "Add the current user as a follower of one or more Spotify users.",
             "args": [{
                     "name": "access_token",
                     "type": "String",
@@ -266,6 +277,7 @@
                 }]
         }, {
             "name": "followArtist",
+            "description": "Add the current user as a follower of one or more artists.",
             "args": [{
                     "name": "access_token",
                     "type": "String",
@@ -286,6 +298,7 @@
                 }]
         }, {
             "name": "unfollowUser",
+            "description": "Remove the current user as a follower of one or more Spotify users.",
             "args": [{
                     "name": "access_token",
                     "type": "String",
@@ -306,6 +319,7 @@
                 }]
         }, {
             "name": "unfollowArtist",
+            "description": "Remove the current user as a follower of one or more artists.",
             "args": [{
                     "name": "access_token",
                     "type": "String",
@@ -326,6 +340,7 @@
                 }]
         }, {
             "name": "checkFollowUser",
+            "description": "Check to see if the current user is following one or more Spotify users.",
             "args": [{
                     "name": "access_token",
                     "type": "String",
@@ -346,6 +361,7 @@
                 }]
         }, {
             "name": "checkFollowArtist",
+            "description": "Check to see if the current user is following one or more artists.",
             "args": [{
                     "name": "access_token",
                     "type": "String",
@@ -366,6 +382,7 @@
                 }]
         }, {
             "name": "followPlaylist",
+            "description": "Add the current user as a follower of a playlist.",
             "args": [{
                     "name": "access_token",
                     "type": "String",
@@ -396,6 +413,7 @@
                 }]
         }, {
             "name": "unfollowPlaylist",
+            "description": "Remove the current user as a follower of a playlist.",
             "args": [{
                     "name": "access_token",
                     "type": "String",
@@ -421,6 +439,7 @@
                 }]
         }, {
             "name": "saveTrack",
+            "description": "Save one or more tracks to the current user’s “Your Music” library.",
             "args": [{
                     "name": "access_token",
                     "type": "String",
@@ -441,6 +460,7 @@
                 }]
         }, {
             "name": "getUserSavedTracks",
+            "description": "Get a list of the songs saved in the current Spotify user’s “Your Music” library.",
             "args": [{
                     "name": "access_token",
                     "type": "String",
@@ -461,6 +481,7 @@
                 }]
         }, {
             "name": "removeSavedTracks",
+            "description": "Remove one or more tracks from the current user’s “Your Music” library.",
             "args": [{
                     "name": "access_token",
                     "type": "String",
@@ -481,6 +502,7 @@
                 }]
         }, {
             "name": "checkSavedTrack",
+            "description": "Check if one or more tracks is already saved in the current Spotify user’s “Your Music” library.",
             "args": [{
                     "name": "access_token",
                     "type": "String",
@@ -501,6 +523,7 @@
                 }]
         }, {
             "name": "saveAlbumForUser",
+            "description": "Save one or more albums to the current user’s “Your Music” library.",
             "args": [{
                     "name": "access_token",
                     "type": "String",
@@ -521,6 +544,7 @@
                 }]
         }, {
             "name": "getUserSavedAlbums",
+            "description": "Get a list of the albums saved in the current Spotify user’s “Your Music” library.",
             "args": [{
                     "name": "access_token",
                     "type": "String",
@@ -541,6 +565,7 @@
                 }]
         }, {
             "name": "removeSavedAlbum",
+            "description": "Remove one or more albums from the current user’s “Your Music” library.",
             "args": [{
                     "name": "access_token",
                     "type": "String",
@@ -561,6 +586,7 @@
                 }]
         }, {
             "name": "checkSavedAlbum",
+            "description": "Check if one or more albums is already saved in the current Spotify user’s “Your Music” library.",
             "args": [{
                     "name": "access_token",
                     "type": "String",
@@ -581,6 +607,7 @@
                 }]
         }, {
             "name": "getUserTopArtists",
+            "description": "Get the current user’s top artists based on calculated affinity.",
             "args": [{
                     "name": "access_token",
                     "type": "String",
@@ -601,6 +628,7 @@
                 }]
         }, {
             "name": "getUserTopTracks",
+            "description": "Get the current user’s top tracks based on calculated affinity.",
             "args": [{
                     "name": "access_token",
                     "type": "String",
@@ -621,6 +649,7 @@
                 }]
         }, {
             "name": "getRecommendations",
+            "description": "Create a playlist-style listening experience based on seed artists, tracks and genres.",
             "args": [{
                     "name": "access_token",
                     "type": "String",
