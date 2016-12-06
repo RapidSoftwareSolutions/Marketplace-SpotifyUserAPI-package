@@ -58,7 +58,7 @@ $app->post('/api/SpotifyUserAPI/saveAlbumForUser', function ($request, $response
             ]);
         $responseBody = $resp->getBody()->getContents();
         $code = $resp->getStatusCode();
-        if($resp->getStatusCode() == '201') {
+        if(in_array($resp->getStatusCode(), ['200','201','202','203','204'])) {
             $result['callback'] = 'success';
             $result['contextWrites']['to'] = "saved";
         } else {
