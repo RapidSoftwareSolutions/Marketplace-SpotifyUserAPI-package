@@ -1,9 +1,10 @@
 {
     "package": "SpotifyUserAPI",
     "tagline": "Spotify Web API Wrapper",
-    "description": "Through the Spotify Web API your applications can retrieve and manage Spotify content.",
+    "description": "Get Spotify user-specific data and automate behaviors.",
     "image": "https://developer.spotify.com/wp-content/uploads/2016/07/icon1@2x.png",
     "repo": "https://github.com/RapidSoftwareSolutions/Marketplace-SpotifyUserAPI-package",
+    "keywords": ["API", "album", "albums", "artist", "artists", "audio", "band", "music", "musician", "playlist", "playlists", "song", "songs", "tracks"],
     "accounts": {
         "domain": "spotify.com",
         "credentials": ["client_id", "client_key"]
