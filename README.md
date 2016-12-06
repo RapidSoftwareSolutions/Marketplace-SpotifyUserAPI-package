@@ -1,5 +1,5 @@
 # SpotifyUserAPI Package
-Through the Spotify Web API your applications can retrieve and manage Spotify content.
+Get Spotify user-specific data and automate behaviors.
 * Domain: spotify.com
 * Credentials: client_id, client_key
 
