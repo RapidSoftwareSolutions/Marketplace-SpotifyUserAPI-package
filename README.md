@@ -1,3 +1,5 @@
+[![](https://scdn.rapidapi.com/RapidAPI_banner.png)](https://rapidapi.com/package/SpotifyUserAPI/functions?utm_source=RapidAPIGitHub_SpotifyUserFunctions&utm_medium=button&utm_content=RapidAPI_GitHub)
+
 # SpotifyUserAPI Package
 Get Spotify user-specific data and automate behaviors.
 * Domain: spotify.com
