@@ -107,7 +107,7 @@
                     "required": false
                 }, {
                     "name": "timestamp",
-                    "type": "String",
+                    "type": "DatePicker",
                     "info": "A timestamp in ISO 8601 format: yyyy-MM-ddTHH:mm:ss. Use this parameter to specify the user's local time to get results tailored for that specific date and time in the day.",
                     "required": false
                 }],
@@ -615,7 +615,8 @@
                     "required": true
                 }, {
                     "name": "time_range",
-                    "type": "String",
+                    "type": "Select",
+                    "options": ["long_term","medium_term","short_term"],
                     "info": "Over what time frame the affinities are computed. Valid values: long_term (calculated from several years of data and including all new data as it becomes available), medium_term (approximately last 6 months), short_term (approximately last 4 weeks). Default: medium_term.",
                     "required": false
                 }],
@@ -636,7 +637,8 @@
                     "required": true
                 }, {
                     "name": "time_range",
-                    "type": "String",
+                    "type": "Select",
+                    "options": ["long_term","medium_term","short_term"],
                     "info": "Over what time frame the affinities are computed. Valid values: long_term (calculated from several years of data and including all new data as it becomes available), medium_term (approximately last 6 months), short_term (approximately last 4 weeks). Default: medium_term.",
                     "required": false
                 }],

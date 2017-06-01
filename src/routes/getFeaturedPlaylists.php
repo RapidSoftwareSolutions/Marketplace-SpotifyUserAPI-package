@@ -2,7 +2,7 @@
 
 $app->post('/api/SpotifyUserAPI/getFeaturedPlaylists', function ($request, $response, $args) {
     $settings =  $this->settings;
-    
+
     $data = $request->getBody();
 
     if($data=='') {
@@ -46,7 +46,8 @@ $app->post('/api/SpotifyUserAPI/getFeaturedPlaylists', function ($request, $resp
         $query['country'] = $post_data['args']['country'];
     }
     if(!empty($post_data['args']['timestamp'])) {
-        $query['timestamp'] = $post_data['args']['timestamp'];
+        $date = new DateTime($postData['args']['timestamp']);
+        $query['timestamp'] = $date->format('c');
     }
     $query['limit'] = 50;
     

@@ -11,6 +11,17 @@ Get Spotify user-specific data and automate behaviors.
 2. [Create new app](https://developer.spotify.com/my-applications/#!/applications/create)
 3. When you register an application on your account, two credentials are created for you - **Client ID** and **Client Secret**. You can see the credentials on the application’s details page.
 
+## Custom datatypes:
+ |Datatype|Description|Example
+ |--------|-----------|----------
+ |Datepicker|String which includes date and time|```2016-05-28 00:00:00```
+ |Map|String which includes latitude and longitude coma separated|```50.37, 26.56```
+ |List|Simple array|```["123", "sample"]```
+ |Select|String with predefined values|```sample```
+ |Array|Array of objects|```[{"Second name":"123","Age":"12","Photo":"sdf","Draft":"sdfsdf"},{"name":"adi","Second name":"bla","Age":"4","Photo":"asfserwe","Draft":"sdfsdf"}] ```
+
+
+
 ## SpotifyUserAPI.getAccessToken
 Exchange an authorization code received when the user signs into the app for an access token used for API calls.
 
@@ -49,7 +60,7 @@ Get a list of Spotify featured playlists (shown, for example, on a Spotify playe
 | access_token| String| A valid access token from the getAccessToken method
 | locale      | String| Optional: The desired language, consisting of a lowercase ISO 639 language code and an uppercase ISO 3166-1 alpha-2 country code, joined by an underscore.
 | country     | String| Optional: A country: an ISO 3166-1 alpha-2 country code. Provide this parameter if you want the list of returned items to be relevant to a particular country.
-| timestamp   | String| Optional: A timestamp in ISO 8601 format: yyyy-MM-ddTHH:mm:ss. Use this parameter to specify the user's local time to get results tailored for that specific date and time in the day.
+| timestamp   | DatePicker| Optional: A timestamp in ISO 8601 format: yyyy-MM-ddTHH:mm:ss. Use this parameter to specify the user's local time to get results tailored for that specific date and time in the day.
 
 
 ## SpotifyUserAPI.getNewReleases
@@ -261,7 +272,7 @@ Get the current user’s top artists.
 | Field       | Type  | Description
 |-------------|-------|----------
 | access_token| String| A valid access token from the getAccessToken method
-| time_range  | String| Optional: Over what time frame the affinities are computed. Valid values: long_term (calculated from several years of data and including all new data as it becomes available), medium_term (approximately last 6 months), short_term (approximately last 4 weeks). Default: medium_term.
+| time_range  | Select| Optional: Over what time frame the affinities are computed. Valid values: long_term (calculated from several years of data and including all new data as it becomes available), medium_term (approximately last 6 months), short_term (approximately last 4 weeks). Default: medium_term.
 
 
 ## SpotifyUserAPI.getUserTopTracks
@@ -270,7 +281,7 @@ Get the current user’s top tracks.
 | Field       | Type  | Description
 |-------------|-------|----------
 | access_token| String| A valid access token from the getAccessToken method
-| time_range  | String| Optional: Over what time frame the affinities are computed. Valid values: long_term (calculated from several years of data and including all new data as it becomes available), medium_term (approximately last 6 months), short_term (approximately last 4 weeks). Default: medium_term.
+| time_range  | Select| Optional: Over what time frame the affinities are computed. Valid values: long_term (calculated from several years of data and including all new data as it becomes available), medium_term (approximately last 6 months), short_term (approximately last 4 weeks). Default: medium_term.
 
 
 ## SpotifyUserAPI.getRecommendations
